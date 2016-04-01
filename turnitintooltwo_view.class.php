@@ -1333,7 +1333,16 @@ class turnitintooltwo_view {
                 $submission->submission_objectid = 0;
             }
 
-            $uploadtext = (!$istutor) ? html_writer::tag('span', get_string('submitpaper', 'turnitintooltwo')) : '';
+            // START UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
+
+            //$uploadtext = (!$istutor) ? html_writer::tag('span', get_string('submitpaper', 'turnitintooltwo')) : '';
+            if (!empty($submission->submission_objectid) && !empty($submission->id) && !$submission->submission_acceptnothing) {
+                $submissionstr = get_string('resubmit', 'turnitintooltwo');
+            } else {
+                $submissionstr = get_string('submitpaper', 'turnitintooltwo');
+            }
+
+            // END UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
 
             $eulaaccepted = 0;
             if ($submission->userid == $USER->id) {
@@ -1343,11 +1352,23 @@ class turnitintooltwo_view {
                 $eulaaccepted = ($submission_user->user_agreement_accepted == 0) ?
                                     $submission_user->get_accepted_user_agreement() : $submission_user->user_agreement_accepted;
             }
+
+            // START UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
+
+            /*
             $upload = html_writer::link($CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.$cm->id.'&part='.$partid.'&user='.
                                         $submission->userid.'&do=submitpaper&view_context=box_solid', $uploadtext.' '.
                                         html_writer::tag('i', '', array('class' => 'fa fa-cloud-upload fa-lg')),
                                         array("class" => "upload_box nowrap", "id" => "upload_".$submission->submission_objectid.
                                                             "_".$partid."_".$submission->userid, 'data-eula' => $eulaaccepted, 'data-user-type' => $istutor));
+            */
+            $upload = html_writer::link($CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.$cm->id.'&part='.$partid.'&user='.
+                                        $submission->userid.'&do=submitpaper&view_context=box_solid', 
+                                        html_writer::tag('div', $submissionstr, array('class'=>'btn btn-default btn-primary btn-block')),
+                                        array("class" => "upload_box nowrap", "id" => "upload_".$submission->submission_objectid.
+                                                            "_".$partid."_".$submission->userid, 'data-eula' => $eulaaccepted, 'data-user-type' => $istutor));
+
+            // END UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
 
             if (time() > $parts[$partid]->dtdue && $turnitintooltwoassignment->turnitintooltwo->allowlate == 0 && !$istutor) {
                 $upload = "&nbsp;";
@@ -1359,11 +1380,22 @@ class turnitintooltwo_view {
 
         // Download submission in original format.
         if (!empty($submission->submission_objectid) && !empty($submission->id) && !$submission->submission_acceptnothing) {
+
+            // START UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
+            /*
             $download = $OUTPUT->box(
                 html_writer::tag('i', '', array('class' => 'fa fa-cloud-download fa-lg')),
                 'download_original_open',
                 'downloadoriginal_' . $submission->submission_objectid . "_" . $partid . "_" . $moodleuserid
             );
+            */
+            $download = $OUTPUT->box(
+                html_writer::tag('i', '', array('class' => 'fa fa-download fa-lg')),
+                'download_original_open',
+                'downloadoriginal_' . $submission->submission_objectid . "_" . $partid . "_" . $moodleuserid
+            );
+            // END UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
+
             $download .= $OUTPUT->box('', 'launch_form', 'downloadoriginal_form_'.$submission->submission_objectid);
 
             // Add in LTI launch form incase Javascript is disabled.

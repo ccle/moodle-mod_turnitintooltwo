@@ -43,13 +43,27 @@ class turnitintooltwo_view {
     public function output_header($cm, $course, $url, $title = '', $heading = '', $navigation = array(),
                             $focus = '', $meta = '', $cache = true, $button = '',
             $menu = null, $usexml = false, $bodytags = '', $return = false) {
-        global $PAGE, $OUTPUT;
+
+        // START UCLA-MOD: CCLE-5750 Turn editing on button
+
+        global $PAGE, $OUTPUT, $CFG;
+
+        // END UCLA-MOD: CCLE-5750 Turn editing on button
 
         $cmid = ($cm != null) ? $cm->id : null;
         $courseid = ($course != null) ? $course->id : null;
 
         if (!is_null($cmid) && $button != '') {
-            $PAGE->set_button($OUTPUT->update_module_button($cm->id, "turnitintooltwo"));
+           
+           // START UCLA-MOD: CCLE-5750 Turn editing on button
+
+           // $PAGE->set_button($OUTPUT->update_module_button($cm->id, "turnitintooltwo"));
+           $editurl = new moodle_url("$CFG->wwwroot/course/mod.php", array('update' => $cm->id, 'return' => true, 'sesskey' => sesskey()));
+           $PAGE->set_button($OUTPUT->edit_button($editurl));
+
+           // END UCLA-MOD: CCLE-5750 Turn editing on button
+
+
         }
 
         $PAGE->set_url($url);

@@ -617,7 +617,10 @@ class turnitintooltwo_submission {
                 $this->receipt->send_message($this->userid, $message);
 
                 // Instructor digital receipt
-                $this->submission_instructors = get_users_by_capability($context,'mod/turnitintooltwo:grade', 'u.id');
+                // START UCLA MOD: CCLE-4440 - List of users eligible for Turnitin Tutor
+                // $this->submission_instructors = get_users_by_capability($context,'mod/turnitintooltwo:grade', 'u.id');
+                $this->submission_instructors = local_ucla_core_edit::get_course_graders($cm->course);
+                // END UCLA MOD: CCLE-4440
                 if(!empty($this->submission_instructors)){
                     $message = $this->instructor_receipt->build_instructor_message($input);
                     $this->instructor_receipt->send_instructor_message($this->submission_instructors, $message);

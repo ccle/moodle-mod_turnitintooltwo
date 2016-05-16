@@ -1135,9 +1135,18 @@ class turnitintooltwo_view {
             } else {
                 if (empty($submission->nmoodle)) {
                     // Link to user profile.
+                    // 
+                    // START UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
+                    /*
                     $studentname = html_writer::link($CFG->wwwroot."/user/view.php?id=".$submission->userid."&course=".
                                                 $turnitintooltwoassignment->turnitintooltwo->course,
                                                 format_string($submission->lastname).", ".format_string($submission->firstname));
+                     */
+                    $studentname = html_writer::link($CFG->wwwroot."/user/view.php?id=".$submission->userid."&course=".
+                                                $turnitintooltwoassignment->turnitintooltwo->course,
+                                                $submission->fullname);
+                    // END UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
+                    
                 } else if (!empty($submission->nmoodle) && substr($submission->userid, 0, 3) != 'nm-') {
                     // Moodle User not enrolled on this course as a student.
                     $studentname = html_writer::link($CFG->wwwroot."/user/view.php?id=".$submission->userid."&course=".
@@ -1502,7 +1511,6 @@ class turnitintooltwo_view {
 
         foreach ($_SESSION["submissions"][$partid] as $submission) {
             $i++;
-
             $data = $this->get_submission_inbox_row($cm, $turnitintooltwoassignment, $parts, $partid, $submission,
                                                         $useroverallgrades, $istutor);
             $submissiondata[] = $data;
@@ -1894,9 +1902,17 @@ class turnitintooltwo_view {
                 $attributes["onclick"] = 'return confirm(\''.$removestr.'\');';
                 $link = html_writer::link($deleteurl, html_writer::tag('i', '', array('class' => 'fa fa-trash-o fa-lg')),
                                                                                                         $attributes);
+                
+                // START UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
+                /*
                 $userdetails = html_writer::link($CFG->wwwroot.'/user/view.php?id='.$membermoodleid.
                                                     '&course='.$turnitintooltwoassignment->turnitintooltwo->course,
                                                     format_string($v['lastname']).', '.format_string($v['firstname'])).' ('.$user->username.')';
+                 */
+                $userdetails = html_writer::link($CFG->wwwroot.'/user/view.php?id='.$membermoodleid.
+                                                    '&course='.$turnitintooltwoassignment->turnitintooltwo->course,
+                                                    fullname($user)).' ('.$user->username.')';
+                // END UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
                 $memberdata[] = array($link, $userdetails);
             }
         }
@@ -1937,8 +1953,13 @@ class turnitintooltwo_view {
             if (array_key_exists($availabletutor->tii_user_id, $tutors)) {
                 unset($moodletutors[$k]);
             } else {
+                // START UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
+                /*
                 $options[$availabletutor->id] = format_string($availabletutor->lastname).', '.
                                                     format_string($availabletutor->firstname).' ('.$availabletutor->username.')';
+                 */
+                $options[$availabletutor->id] = $availabletutor->fullname.' ('.$availabletutor->username.')';
+                // END UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
             }
         }
 

@@ -189,16 +189,11 @@ class turnitintooltwo_submission {
             }
 
             if ($submission->userid > 0) {
-                // START UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname. 
-                // $user = $DB->get_record('user', array('id' => $submission->userid), 'firstname, lastname');
-                $user = $DB->get_record('user', array('id' => $submission->userid), 'firstname, lastname, middlename, alternatename');
-                $this->fullname = "hello";
-                // END UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
+                $user = $DB->get_record('user', array('id' => $submission->userid), 'firstname, lastname');
                 $this->firstname = $user->firstname;
                 $this->lastname = $user->lastname;
                 $this->nmoodle = 0;
             } else {
-                $this->fullname = "hello2";
                 $this->firstname = $submission->submission_nmfirstname;
                 $this->lastname = $submission->submission_nmlastname;
                 $this->nmoodle = 1;

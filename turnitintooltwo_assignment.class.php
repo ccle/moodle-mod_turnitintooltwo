@@ -1871,8 +1871,8 @@ class turnitintooltwo_assignment {
             $users = get_users_by_capability($context, 'mod/turnitintooltwo:submit', 'u.id, u.firstname, u.lastname',
                                                 '', '', '', groups_get_activity_group($cm), '');
              */
-            $users = get_users_by_capability($context, 'mod/turnitintooltwo:submit', 'u.id, u.firstname, u.lastname, ' .
-                                                'u.middlename, u.alternatename, u.firstnamephonetic, lastnamephonetic',
+            $allnames = get_all_user_name_fields();
+            $users = get_users_by_capability($context, 'mod/turnitintooltwo:submit', 'u.id, ' . implode($allnames, ', '),
                                                 '', '', '', groups_get_activity_group($cm), '');
             // END UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
             $users = (!$users) ? array() : $users;            

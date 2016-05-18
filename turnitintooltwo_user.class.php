@@ -20,6 +20,9 @@ class turnitintooltwo_user {
     private $role;
     public $firstname;
     public $lastname;
+    // START UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
+    public $fullname;
+    // END UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
     public $email;
     public $username;
     public $user_agreement_accepted;
@@ -37,6 +40,9 @@ class turnitintooltwo_user {
 
         $this->firstname = "";
         $this->lastname = "";
+        // START UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
+        $this->fullname = "";
+        // END UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
         $this->email = "";
         $this->username = "";
 
@@ -90,6 +96,9 @@ class turnitintooltwo_user {
 
         $this->firstname = stripslashes(str_replace('/', '', $user->firstname));
         $this->lastname = stripslashes(str_replace('/', '', $user->lastname));
+        // START UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
+        $this->fullname = fullname($user);
+        // END UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
 
         // Set a default for first and last name in the event they are empty.
         $firstname = trim($this->firstname);

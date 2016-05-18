@@ -23,6 +23,9 @@ class turnitintooltwo_submission {
     public $userid;
     public $firstname;
     public $lastname;
+    // START UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
+    public $fullname;
+    // END UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
     private $turnitintooltwoid;
     public $submission_part;
     public $submission_title;

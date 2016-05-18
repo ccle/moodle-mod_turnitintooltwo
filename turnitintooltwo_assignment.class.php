@@ -1866,9 +1866,16 @@ class turnitintooltwo_assignment {
 
         // If logged in as instructor then get for all users.
         if ($istutor && $userid == 0) {
+            // START UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
+            /*
             $users = get_users_by_capability($context, 'mod/turnitintooltwo:submit', 'u.id, u.firstname, u.lastname',
                                                 '', '', '', groups_get_activity_group($cm), '');
-            $users = (!$users) ? array() : $users;
+             */
+            $allnames = get_all_user_name_fields();
+            $users = get_users_by_capability($context, 'mod/turnitintooltwo:submit', 'u.id, ' . implode($allnames, ', '),
+                                                '', '', '', groups_get_activity_group($cm), '');
+            // END UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
+            $users = (!$users) ? array() : $users;            
         } else if ($istutor) {
             $user = $DB->get_record('user', array('id' => $userid));
             $users = array($userid => $user);
@@ -1879,7 +1886,6 @@ class turnitintooltwo_assignment {
             $sql .= " AND userid = ? ";
             $sqlparams[] = $USER->id;
         }
-
         // Populate the submissions array to show all users for all parts.
         $submissions = array();
         foreach ($parts as $part) {
@@ -1889,6 +1895,9 @@ class turnitintooltwo_assignment {
                 $emptysubmission->userid = $user->id;
                 $emptysubmission->firstname = $user->firstname;
                 $emptysubmission->lastname = $user->lastname;
+                // START UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
+                $emptysubmission->fullname = fullname($user);
+                // END UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
                 $emptysubmission->submission_unanon = 0;
                 $emptysubmission->nmoodle = 0;
                 if ($submissionsonly == 0) {
@@ -1905,6 +1914,9 @@ class turnitintooltwo_assignment {
                 $user = new turnitintooltwo_user($submission->userid, 'Learner', false);
                 $submission->firstname = $user->firstname;
                 $submission->lastname = $user->lastname;
+                // START UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname. 
+                $submission->fullname = $user->fullname;
+                // END UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
                 $submission->tii_user_id = $user->tii_user_id;
                 $submission->nmoodle = 0;
 

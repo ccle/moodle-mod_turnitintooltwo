@@ -1911,7 +1911,7 @@ class turnitintooltwo_view {
                  */
                 $userdetails = html_writer::link($CFG->wwwroot.'/user/view.php?id='.$membermoodleid.
                                                     '&course='.$turnitintooltwoassignment->turnitintooltwo->course,
-                                                    fullname($user)).' ('.$user->username.')';
+                                                    fullname($user)).' ('.$user->email.')';
                 // END UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
                 $memberdata[] = array($link, $userdetails);
             }
@@ -1958,7 +1958,7 @@ class turnitintooltwo_view {
                 $options[$availabletutor->id] = format_string($availabletutor->lastname).', '.
                                                     format_string($availabletutor->firstname).' ('.$availabletutor->username.')';
                  */
-                $options[$availabletutor->id] = $availabletutor->fullname.' ('.$availabletutor->username.')';
+                $options[$availabletutor->id] = $availabletutor->fullname.' ('.$availabletutor->email.')';
                 // END UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
             }
         }

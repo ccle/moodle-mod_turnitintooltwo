@@ -1866,7 +1866,7 @@ class turnitintooltwo_assignment {
 
         // If logged in as instructor then get for all users.
         if ($istutor && $userid == 0) {
-            // START UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
+            // START UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname AND CCLE-5141-list-inactive-student.
             /*
             $users = get_users_by_capability($context, 'mod/turnitintooltwo:submit', 'u.id, u.firstname, u.lastname',
                                                 '', '', '', groups_get_activity_group($cm), '');
@@ -1874,7 +1874,11 @@ class turnitintooltwo_assignment {
             $allnames = get_all_user_name_fields();
             $users = get_users_by_capability($context, 'mod/turnitintooltwo:submit', 'u.id, ' . implode($allnames, ', '),
                                                 '', '', '', groups_get_activity_group($cm), '');
-            // END UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname.
+            $suser = get_suspended_userids($context);
+            foreach ($suser as $k => $v) {
+                unset($users[$k]);
+            }
+            // END UCLA-MOD: CCLE-5812-turnitintutorlist-display-legalname AND CCLE-5141-list-inactive-student.
             $users = (!$users) ? array() : $users;            
         } else if ($istutor) {
             $user = $DB->get_record('user', array('id' => $userid));

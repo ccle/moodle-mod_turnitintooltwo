@@ -1469,7 +1469,7 @@ class turnitintooltwo_assignment {
          */
         $context = context_module::instance($cm->id);
         $courseusers = get_users_by_capability($context, 'mod/turnitintooltwo:submit', '', 'u.lastname, u.firstname');
-        $suser = get_suspended_userids(context_module::instance($cm->id));
+        $suser = get_suspended_userids($context);
         foreach ($suser as $k => $v) {
             unset($courseusers[$k]);
         }

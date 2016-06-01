@@ -1461,9 +1461,19 @@ class turnitintooltwo_assignment {
      * @return array of course users or empty array if none
      */
     public function get_moodle_course_users($cm) {
-        $courseusers = get_users_by_capability(context_module::instance($cm->id),
+        // START UCLA-MOD: CCLE-5141-list-inactive-student.
+        /* 
+         * $courseusers = get_users_by_capability(context_module::instance($cm->id),
                                 'mod/turnitintooltwo:submit', '', 'u.lastname, u.firstname');
-
+         * 
+         */
+        $context = context_module::instance($cm->id);
+        $courseusers = get_users_by_capability($context, 'mod/turnitintooltwo:submit', '', 'u.lastname, u.firstname');
+        $suser = get_suspended_userids(context_module::instance($cm->id));
+        foreach ($suser as $k => $v) {
+            unset($courseusers[$k]);
+        }
+        // END UCLA-MOD: CCLE-5141-list-inactive-student.
         return (!is_array($courseusers)) ? array() : $courseusers;
     }
 

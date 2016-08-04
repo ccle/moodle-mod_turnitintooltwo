@@ -213,9 +213,12 @@ class turnitintooltwo_view {
 
             $tabs[] = new tabobject('tutors', $CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.$cm->id.'&do=tutors',
                     get_string('turnitintutors', 'turnitintooltwo'), get_string('turnitintutors', 'turnitintooltwo'), false);
-
-            $tabs[] = new tabobject('students', $CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.$cm->id.'&do=students',
+            
+            // START UCLA-MOD: CCLE-5895 Hide students tab.
+            /* $tabs[] = new tabobject('students', $CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.$cm->id.'&do=students',
                     get_string('turnitinstudents', 'turnitintooltwo'), get_string('turnitinstudents', 'turnitintooltwo'), false);
+             */
+            // END UCLA-MOD: CCLE-5895 Hide students tab.
         } else {
             $tabs[] = new tabobject('submissions', $CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.$cm->id.'&do=submissions',
                     get_string('mysubmissions', 'turnitintooltwo'), get_string('mysubmissions', 'turnitintooltwo'), false);

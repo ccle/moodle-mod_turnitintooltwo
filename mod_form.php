@@ -358,7 +358,11 @@ class mod_turnitintooltwo_mod_form extends moodleform_mod {
             $mform->addElement('date_time_selector', 'dtpost'.$i, get_string('dtpost', 'turnitintooltwo'), $dateoptions);
             $mform->setDefault('dtpost'.$i, strtotime('+7 days'));
 
-            $mform->addElement('text', 'maxmarks'.$i, get_string('maxmarks', 'turnitintooltwo'));
+            // START UCLA-MOD: CCLE-5788-rename-grading-text.
+            // $mform->addElement('text', 'maxmarks'.$i, get_string('maxmarks', 'turnitintooltwo'));
+            $mform->addElement('text', 'maxmarks'.$i, get_string('maximumgrade', 'moodle'));
+            // END UCLA-MOD: CCLE-5788-rename-grading-text.
+            
             $mform->setType('maxmarks'.$i, PARAM_INT);
             $mform->setDefault('maxmarks'.$i, '100');
             $mform->addRule('maxmarks'.$i, null, 'numeric', null, 'client');

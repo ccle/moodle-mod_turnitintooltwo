@@ -565,3 +565,4 @@ $string['messageprovider:notify_instructor_of_submission'] = 'Turnitin Assignmen
 $string['task_name'] = 'Turnitintooltwo Cron Task';
 $string['crontaskmodeactive'] = 'Turnitintooltwo - Aborted Cron call because of active task mode';
 $string['restorationheader'] = 'Turnitin Class Restoration';
+$string['assignmentdefault'] = 'Assignment default';

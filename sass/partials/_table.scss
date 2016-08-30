@@ -51,7 +51,10 @@
     td {
         padding: $table-padding 10px !important;
         font-size: 13px;
-        vertical-align: top;
+	/* START UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button */
+        /* vertical-align: top; */
+	vertical-align: middle;
+	/* END UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button */
     }
 
     .sorting_disabled {

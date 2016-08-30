@@ -214,9 +214,12 @@ class turnitintooltwo_view {
 
             $tabs[] = new tabobject('tutors', $CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.$cm->id.'&do=tutors',
                     get_string('turnitintutors', 'turnitintooltwo'), get_string('turnitintutors', 'turnitintooltwo'), false);
-
-            $tabs[] = new tabobject('students', $CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.$cm->id.'&do=students',
+            
+            // START UCLA-MOD: CCLE-5895 Hide students tab.
+            /* $tabs[] = new tabobject('students', $CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.$cm->id.'&do=students',
                     get_string('turnitinstudents', 'turnitintooltwo'), get_string('turnitinstudents', 'turnitintooltwo'), false);
+             */
+            // END UCLA-MOD: CCLE-5895 Hide students tab.
         } else {
             $tabs[] = new tabobject('submissions', $CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.$cm->id.'&do=submissions',
                     get_string('mysubmissions', 'turnitintooltwo'), get_string('mysubmissions', 'turnitintooltwo'), false);
@@ -1445,7 +1448,16 @@ class turnitintooltwo_view {
                 $submission->submission_objectid = 0;
             }
 
-            $uploadtext = (!$istutor) ? html_writer::tag('span', get_string('submitpaper', 'turnitintooltwo')) : '';
+            // START UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
+
+            //$uploadtext = (!$istutor) ? html_writer::tag('span', get_string('submitpaper', 'turnitintooltwo')) : '';
+            if (!empty($submission->submission_objectid) && !empty($submission->id) && !$submission->submission_acceptnothing) {
+                $submissionstr = get_string('resubmit', 'turnitintooltwo');
+            } else {
+                $submissionstr = get_string('submitpaper', 'turnitintooltwo');
+            }
+
+            // END UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
 
             $eulaaccepted = 0;
             if ($submission->userid == $USER->id) {
@@ -1455,11 +1467,23 @@ class turnitintooltwo_view {
                 $eulaaccepted = ($submission_user->user_agreement_accepted == 0) ?
                                     $submission_user->get_accepted_user_agreement() : $submission_user->user_agreement_accepted;
             }
+
+            // START UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
+
+            /*
             $upload = html_writer::link($CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.$cm->id.'&part='.$partid.'&user='.
                                         $submission->userid.'&do=submitpaper&view_context=box_solid', $uploadtext.' '.
                                         html_writer::tag('i', '', array('class' => 'fa fa-cloud-upload fa-lg')),
                                         array("class" => "upload_box nowrap", "id" => "upload_".$submission->submission_objectid.
                                                             "_".$partid."_".$submission->userid, 'data-eula' => $eulaaccepted, 'data-user-type' => $istutor));
+            */
+            $upload = html_writer::link($CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.$cm->id.'&part='.$partid.'&user='.
+                                        $submission->userid.'&do=submitpaper&view_context=box_solid', 
+                                        html_writer::tag('div', $submissionstr, array('class'=>'btn btn-default btn-primary btn-block')),
+                                        array("class" => "upload_box nowrap", "id" => "upload_".$submission->submission_objectid.
+                                                            "_".$partid."_".$submission->userid, 'data-eula' => $eulaaccepted, 'data-user-type' => $istutor));
+
+            // END UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
 
             if (time() > $parts[$partid]->dtdue && $turnitintooltwoassignment->turnitintooltwo->allowlate == 0 && !$istutor) {
                 $upload = "&nbsp;";
@@ -2024,7 +2048,13 @@ class turnitintooltwo_view {
     public function show_add_tii_tutors_form($cm, $tutors) {
         global $CFG, $OUTPUT;
 
-        $moodletutors = get_enrolled_users(context_module::instance($cm->id), 'mod/turnitintooltwo:grade', 0, 'u.id');
+        // START UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
+        /* $moodletutors = get_users_by_capability(context_module::instance($cm->id), 'mod/turnitintooltwo:grade',
+                                                        'u.id, u.firstname, u.lastname, u.username');
+         */           
+           $course = turnitintooltwo_assignment::get_course_data($cm->course);
+           $moodletutors = local_ucla_core_edit::get_course_graders($course);
+        // END UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
 
         // Populate elements array which will generate the form elements
         // Each element is in following format: (type, name, label, helptext (minus _help), options (if select).

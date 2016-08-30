@@ -142,7 +142,10 @@ $string['submissiontype'] = 'Submission Type';
 $string['submissiontype_help'] = '<p>Indicates the submission type(s) you are allowed to submit to Turnitin.</p>';
 $string['submissionupdateerror'] = 'Could not update submission data';
 $string['submissionuploadsuccess'] = 'Your submission has successfully been uploaded to Turnitin.';
-$string['submitpaper'] = 'Submit Paper';
+// START UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
+// $string['submitpaper'] = 'Submit Paper';
+$string['submitpaper'] = 'Submit';
+// END UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
 $string['submitpapersto'] = 'Store Student Papers';
 $string['submitpapersto_help'] = '<strong>No Repository: </strong><br />Turnitin is instructed to not store submitted documents to any repository. We will only process the paper to perform the initial similarity check.<br /><br /><strong>Standard Repository: </strong><br />Turnitin will store a copy of the submitted document only in the Standard Repository. By choosing this option, Turnitin is instructed to only use stored documents to make similarity checks against any documents submitted in the future.<br /><br /><strong>Institutional Repository (Where Applicable): </strong><br />Choosing this option instructs Turnitin to only add submitted documents to a repository private to your institution. Similarity checks to the submitted documents will only be made by other instructors within your institution.';
 $string['submitted'] = 'Submitted';

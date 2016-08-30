@@ -713,10 +713,16 @@ switch ($do) {
         // Update Assignment from Turnitin on first visit.
         if (empty($_SESSION["assignment_updated"][$turnitintooltwoassignment->turnitintooltwo->id])) {
             $turnitintooltwoassignment->update_assignment_from_tii();
+            
+            // START UCLA MOD: CCLE-4440 - List of users eligible for Turnitin Tutor.
+            // Do not add tutor to the list automatically.
             // Enrol the tutor on the class.
+            /*
             if ($istutor) {
                 $turnitintooltwouser->join_user_to_class($course->turnitin_cid);
-            }
+            }            
+            */      
+            // END UCLA MOD: CCLE-4440 - List of users eligible for Turnitin Tutor.
         }
 
         // Show submission failure if this has been a manual submission.

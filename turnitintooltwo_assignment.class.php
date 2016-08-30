@@ -1531,6 +1531,26 @@ class turnitintooltwo_assignment {
     }
 
     /**
+     * Get the Moodle users who are students
+     *
+     * @param object $cm the course module
+     * @return array of course users or empty array if none
+     */
+    public function get_moodle_course_users($cm) {
+        // START UCLA-MOD: CCLE-5141-list-inactive-student.
+        /* 
+         * $courseusers = get_users_by_capability(context_module::instance($cm->id),
+                                'mod/turnitintooltwo:submit', '', 'u.lastname, u.firstname');
+         * 
+         */
+        $context = context_module::instance($cm->id);
+        $courseusers = get_users_by_capability($context, 'mod/turnitintooltwo:submit', '', 'u.lastname, u.firstname');
+        $suser = get_suspended_userids($context);
+        foreach ($suser as $k => $v) {
+            unset($courseusers[$k]);
+        }
+        // END UCLA-MOD: CCLE-5141-list-inactive-student.
+        return (!is_array($courseusers)) ? array() : $courseusers;
      * Initialise a checkbox value that may not have been set in the edit module form.
      */
     public function set_checkbox_field($field, $value = 0) {
@@ -1949,8 +1969,17 @@ class turnitintooltwo_assignment {
         // If logged in as instructor then get for all users.
         $allnamefields = get_all_user_name_fields();
         if ($istutor && $userid == 0) {
-            $users = get_enrolled_users($context, 'mod/turnitintooltwo:submit', groups_get_activity_group($cm),
-                                        'u.id, ' . implode($allnamefields, ', '));
+            $allnames = get_all_user_name_fields();
+            $users = get_users_by_capability($context, 'mod/turnitintooltwo:submit', 'u.id, ' . implode($allnames, ', '),
+                                                 '', '', '', groups_get_activity_group($cm), '');
+
+            // START UCLA-MOD: CCLE-5141-list-inactive-student.
+            $suser = get_suspended_userids($context);
+             foreach ($suser as $k => $v) {
+                unset($users[$k]);
+            }
+            // END UCLA-MOD: CCLE-5141-list-inactive-student.
+            
             $users = (!$users) ? array() : $users;
         } else if ($istutor) {
             $user = $DB->get_record('user', array('id' => $userid), 'id, ' . implode($allnamefields, ', '));

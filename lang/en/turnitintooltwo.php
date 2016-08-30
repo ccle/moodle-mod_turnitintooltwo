@@ -142,7 +142,10 @@ $string['submissiontype'] = 'Submission Type';
 $string['submissiontype_help'] = '<p>Indicates the submission type(s) you are allowed to submit to Turnitin.</p>';
 $string['submissionupdateerror'] = 'Could not update submission data';
 $string['submissionuploadsuccess'] = 'Your submission has successfully been uploaded to Turnitin.';
-$string['submitpaper'] = 'Submit Paper';
+// START UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
+// $string['submitpaper'] = 'Submit Paper';
+$string['submitpaper'] = 'Submit';
+// END UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
 $string['submitpapersto'] = 'Store Student Papers';
 $string['submitpapersto_help'] = 'This setting provides instructors with the ability to select whether papers are stored in a Turnitin student paper repository. The benefit of submitting papers to the student paper repository is that student papers submitted to the assignment are checked against other students\&#39; submissions within your current and previous classes. If you select &#34;no repository&#34;, your students\&#39; papers will not be stored in the Turnitin student paper repository.';
 $string['submitted'] = 'Submitted';

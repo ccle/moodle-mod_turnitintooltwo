@@ -1465,9 +1465,19 @@ class turnitintooltwo_assignment {
      * @return array of course users or empty array if none
      */
     public function get_moodle_course_users($cm) {
-        $courseusers = get_users_by_capability(context_module::instance($cm->id),
+        // START UCLA-MOD: CCLE-5141-list-inactive-student.
+        /* 
+         * $courseusers = get_users_by_capability(context_module::instance($cm->id),
                                 'mod/turnitintooltwo:submit', '', 'u.lastname, u.firstname');
-
+         * 
+         */
+        $context = context_module::instance($cm->id);
+        $courseusers = get_users_by_capability($context, 'mod/turnitintooltwo:submit', '', 'u.lastname, u.firstname');
+        $suser = get_suspended_userids($context);
+        foreach ($suser as $k => $v) {
+            unset($courseusers[$k]);
+        }
+        // END UCLA-MOD: CCLE-5141-list-inactive-student.
         return (!is_array($courseusers)) ? array() : $courseusers;
     }
 
@@ -1873,7 +1883,16 @@ class turnitintooltwo_assignment {
             $allnames = get_all_user_name_fields();
             $users = get_users_by_capability($context, 'mod/turnitintooltwo:submit', 'u.id, ' . implode($allnames, ', '),
                                                  '', '', '', groups_get_activity_group($cm), '');
-            $users = (!$users) ? array() : $users;
+
+            // START UCLA-MOD: CCLE-5141-list-inactive-student.
+            $suser = get_suspended_userids($context);
+             foreach ($suser as $k => $v) {
+                unset($users[$k]);
+            }
+            // END UCLA-MOD: CCLE-5141-list-inactive-student.
+            
+            $users = (!$users) ? array() : $users;            
+
         } else if ($istutor) {
             $user = $DB->get_record('user', array('id' => $userid));
             $users = array($userid => $user);

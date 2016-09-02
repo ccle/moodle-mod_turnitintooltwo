@@ -1177,7 +1177,10 @@
         }
 
         function lightBoxCloseButton() {
-            $('body').append('<div id="tii_close_bar"><a href="#" onclick="$.colorbox.close(); return false;">' + M.str.turnitintooltwo.closebutton + '</a></div>');
+            // START UCLA MOD: CCLE-5834 Turnitin V2 close button.
+            // $('body').append('<div id="tii_close_bar"><a href="#" onclick="$.colorbox.close(); return false;">' + M.str.turnitintooltwo.closebutton + '</a></div>');
+            $('#cboxWrapper').append('<div id="tii_close_bar"><a href="#" onclick="$.colorbox.close(); return false;">' + M.str.turnitintooltwo.closebutton + '</a></div>');
+            // END UCLA MOD: CCLE-5834 Turnitin V2 close button.
         }
 
         function initialiseDigitalReceipt() {

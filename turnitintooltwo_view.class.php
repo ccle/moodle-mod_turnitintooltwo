@@ -829,35 +829,64 @@ class turnitintooltwo_view {
         if ($istutor) {
             // Output icon to download zip file of submissions in original format.
             $exportoriginalzip = $OUTPUT->box_start('row_export_orig', '');
+            
+            // START UCLA MOD: CCLE-5756 Add tooltip for export column.
+            /* 
             $exportoriginalzip .= $OUTPUT->box(
                 html_writer::tag('i', '', array('class' => 'fa fa-file-o fa-lg')),
                 'zip_open orig_zip_open', 'orig_zip_'.$partdetails[$partid]->tiiassignid
             );
+             * 
+             */
+            $exportoriginalzip .= $OUTPUT->box(
+                html_writer::tag('i', '', array('title' => get_string('exportoriginal', 'turnitintooltwo'), 'class' => 'fa fa-file-o fa-lg')),
+                'zip_open orig_zip_open', 'orig_zip_'.$partdetails[$partid]->tiiassignid
+            );
+            // END UCLA MOD: CCLE-5756 Add tooltip for export column.
             // Put in div placeholder for launch form.
             $exportoriginalzip .= $OUTPUT->box('', 'launch_form', 'orig_zip_form_'.$partdetails[$partid]->tiiassignid);
             $exportoriginalzip .= $OUTPUT->box_end(true);
-
             // Output icon to download zip file of submissions in pdf format.
+            // STARt UCLA MOD: CCLE-5756 Add tooltip for export column.
+            /*
             $exportpdfzip = html_writer::link($CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.
                                     $cm->id.'&part='.$partid.'&do=export_pdfs&view_context=box_solid',
                                     html_writer::tag('i', '', array('class' => 'fa fa-file-pdf-o fa-lg middle-padding')),
                                     array("class" => "downloadpdf_box",
                                             "id" => "download_".$partdetails[$partid]->tiiassignid));
-
+             * 
+             */
+            $exportpdfzip = html_writer::link($CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.
+                                    $cm->id.'&part='.$partid.'&do=export_pdfs&view_context=box_solid',
+                                    html_writer::tag('i', '', array('title' => get_string('exportpdf', 'turnitintooltwo'), 
+                                        'class' => 'fa fa-file-pdf-o fa-lg middle-padding')),
+                                        array("class" => "downloadpdf_box",
+                                            "id" => "download_".$partdetails[$partid]->tiiassignid));
+            // END UCLA MOD: CCLE-5756 Add tooltip for export column.
             // Output icon to download excel spreadsheet of grades.
             $exportxlszip = $OUTPUT->box_start('row_export_xls', '');
+            
+            // START UCLA MOD: CCLE-5756 Add tooltip for export column.
+            /*
             $exportxlszip .= $OUTPUT->box(
                     html_writer::tag('i', '', array('class' => 'fa fa-file-excel-o fa-lg')),
                     'zip_open xls_inbox_open', 'xls_inbox_'.$partdetails[$partid]->tiiassignid
                 );
+             * 
+             */
+            $exportxlszip .= $OUTPUT->box(
+                    html_writer::tag('i', '', array('title' => get_string('exportexcel', 'turnitintooltwo'), 
+                        'class' => 'fa fa-file-excel-o fa-lg')),
+                        'zip_open xls_inbox_open', 'xls_inbox_'.$partdetails[$partid]->tiiassignid
+                );
+            // END UCLA MOD: CCLE-5756 Add tooltip for export column.
             // Put in div placeholder for launch form.
             $exportxlszip .= $OUTPUT->box('', 'launch_form', 'xls_inbox_form_'.$partdetails[$partid]->tiiassignid);
             $exportxlszip .= $OUTPUT->box_end(true);
             $export_options = ($turnitintooltwoassignment->turnitintooltwo->anon == 0 || time() > $partdetails[$partid]->dtpost) ?
                                      'tii_export_options_show' : 'tii_export_options_hide';
-
             $links = $OUTPUT->box_start($export_options, 'export_options');
-
+            
             // Show the export links if they should be available.
             if ($turnitintooltwoassignment->turnitintooltwo->anon == 0 || time() > $partdetails[$partid]->dtpost) {
                 $links .= $exportxlszip.$exportpdfzip.$exportoriginalzip;

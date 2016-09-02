@@ -577,5 +577,10 @@ $string['diagnosticoptions_0'] = 'Off';
 $string['diagnosticoptions_1'] = 'Standard';
 $string['diagnosticoptions_2'] = 'Debugging';
 // START UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
-$string['assignmentdefault'] = 'Assignment default';
+$string['assignmentdefault'] = 'Assignment defaults';
 // END UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
+// START UCLA MOD: CCLE-5756-add-tooltip-to-export-option.
+$string['exportexcel'] = 'Export to Excel';
+$string['exportpdf'] = 'Export to PDF';
+$string['exportoriginal'] = 'Export to original format';
+// END UCLA MOD: CCLE-5756-add-tooltip-to-export-option.

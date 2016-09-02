@@ -835,7 +835,7 @@ class turnitintooltwo_view {
             // Put in div placeholder for launch form.
             $exportoriginalzip .= $OUTPUT->box('', 'launch_form', 'orig_zip_form_'.$partdetails[$partid]->tiiassignid);
             $exportoriginalzip .= $OUTPUT->box_end(true);
-
+            
             // Output icon to download zip file of submissions in pdf format.
             $exportpdfzip = html_writer::link($CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.
                                     $cm->id.'&part='.$partid.'&do=export_pdfs&view_context=box_solid',
@@ -843,7 +843,7 @@ class turnitintooltwo_view {
                                         'class' => 'fa fa-file-pdf-o fa-lg middle-padding')),
                                     array("class" => "downloadpdf_box",
                                             "id" => "download_".$partdetails[$partid]->tiiassignid));
-
+            
             // Output icon to download excel spreadsheet of grades.
             $exportxlszip = $OUTPUT->box_start('row_export_xls', '');
             $exportxlszip .= $OUTPUT->box(
@@ -851,7 +851,7 @@ class turnitintooltwo_view {
                         'class' => 'fa fa-file-excel-o fa-lg')),
                     'zip_open xls_inbox_open', 'xls_inbox_'.$partdetails[$partid]->tiiassignid
                 );
-
+            
             // Put in div placeholder for launch form.
             $exportxlszip .= $OUTPUT->box('', 'launch_form', 'xls_inbox_form_'.$partdetails[$partid]->tiiassignid);
             $exportxlszip .= $OUTPUT->box_end(true);
@@ -859,7 +859,7 @@ class turnitintooltwo_view {
             $exportoptions = $showexport ? 'tii_export_options_show' : 'tii_export_options_hide';
 
             $links = $OUTPUT->box_start($exportoptions, 'export_options');
-
+            
             // Show the export links if they should be available.
             if ($turnitintooltwoassignment->turnitintooltwo->anon == 0 || time() > $partdetails[$partid]->dtpost) {
                 $links .= $exportxlszip.$exportpdfzip.$exportoriginalzip;

@@ -7,7 +7,9 @@ $string['addsubmission'] = 'Add Submission';
 $string['allowlate'] = 'Allow Submissions after the Due Date';
 $string['allsubmissions'] = 'Submission Inbox';
 $string['anon'] = 'Anonymous';
-$string['anonenabled'] = 'Anonymous Marking Enabled';
+// START UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
+$string['anonenabled'] = 'Anonymous Grading Enabled';
+// END UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
 $string['anytype'] = 'Any Submission Type';
 $string['assigngeterror'] = 'Could not get turnitintooltwo data';
 $string['ced'] = 'Class End Date';
@@ -51,7 +53,9 @@ $string['journalcheck_help'] = 'Check against the Turnitin journals, periodicals
 $string['maxfilesize'] = 'Maximum File Size';
 $string['maxfilesize_help'] = 'This setting determines the maximum file size for user submissions to each assignment part. The maximum value you can set this value to is dictated by the value set in course settings, this value is further capped to a maximum file size of 40Mb which is the maximum allowed filesize for file uploads to Turnitin.';
 $string['maxlength'] = 'The maximum length for {$a->field} is {$a->length} characters';
-$string['maxmarks'] = 'Max Marks';
+// START UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
+$string['maxmarks'] = 'Maximum grade';
+// END UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
 $string['pluginname'] = 'Turnitin Assignment 2';
 $string['modulename'] = 'Turnitin Assignment 2';
 $string['modulenameplural'] = 'Turnitin Assignments';
@@ -90,8 +94,10 @@ $string['proxyuser'] = 'Proxy Username';
 $string['proxyuser_desc'] = '<b>[Optional]</b><br />If your proxy requires Authentication enter the username here.';
 $string['reportgenspeed'] = 'Report Generation Speed';
 $string['resubmission'] = 'Resubmission';
-$string['resubmissiongradewarn'] = 'Resubmissions are allowed for this assignment until the due date passes. Any and all marks will be deleted when or if the paper is resubmitted. Would you like to continue?';
-$string['resubmissiongradewarnaware'] = 'Please be aware that if this resubmission is made, any and all marks will be deleted.';
+// START UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
+$string['resubmissiongradewarn'] = 'Resubmissions are allowed for this assignment until the due date passes. Any and all grades will be deleted when or if the paper is resubmitted. Would you like to continue?';
+$string['resubmissiongradewarnaware'] = 'Please be aware that if this resubmission is made, any and all grades will be deleted.';
+// END UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
 $string['resubmit'] = 'Resubmit';
 $string['reveal'] = 'Reveal';
 $string['revealerror'] = 'You must include a valid reason for unmasking a students name.';
@@ -138,7 +144,9 @@ $string['texttosubmit_help'] = 'Copy and paste the text of your submission into 
 $string['title'] = 'Title';
 $string['turnitinaccountid'] = 'Turnitin Account ID';
 $string['turnitinaccountid_desc'] = '<b>[Required]</b><br />Enter your Turnitin Primary Account ID';
-$string['turnitinanon'] = 'Anonymous Marking';
+// START UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
+$string['turnitinanon'] = 'Anonymous Grading';
+// END UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
 $string['turnitinapiurl'] = 'Turnitin API URL';
 $string['turnitindeleteconfirm'] = 'Deleting papers removes them from your submissions list and inbox but does not completely\nremove them from the Turnitin database.\n\nAre you sure you want to delete this submission? This action cannot be undone.';
 $string['turnitindeletionerror'] = 'Turnitin submission deletion failed. The local Moodle copy was removed but the submission in Turnitin could not be deleted.';
@@ -167,8 +175,10 @@ $string['turnitintooltwoupdateerror'] = 'Could not update turnitintooltwo data';
 $string['turnitintooltwoagreement_desc'] = '<b>[Optional]</b><br />Enter an agreement confirmation statement for submissions.<br />(<b>Note:</b> If the agreement is left completely blank then no agreement confirmation will be required by students during submission)';
 $string['turnitintooltwodeleteerror'] = 'Could not delete turnitintooltwo data';
 $string['turnitintooltwogeterror'] = 'Could not get turnitintooltwo data';
-$string['turnitinuseanon'] = 'Use Anonymous Marking';
-$string['turnitinuseanon_desc'] = 'Choose whether to allow Anonymous Marking when grading submissions.<br /><i>(This is only available to those that have Anonymous Marking configured for their account)</i>';
+// START UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
+$string['turnitinuseanon'] = 'Use Anonymous Grading';
+$string['turnitinuseanon_desc'] = 'Choose whether to allow Anonymous Grading when grading submissions.<br /><i>(This is only available to those that have Anonymous Grading configured for their account)</i>';
+// END UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
 $string['turnitinusegrademark'] = 'Use GradeMark';
 $string['turnitinusegrademark_help'] = 'Use this setting to choose whether to use Turnitin GradeMark to grade the submissions or use Moodle to grade submission.';
 $string['turnitinusegrademark_desc'] = 'Choose whether to use GradeMark to grade submissions.<br /><i>(This is only available to those that have GradeMark configured for their account)</i>';
@@ -197,7 +207,9 @@ $string['downloadgradexls'] = 'Grade Export (XLS)';
 $string['turnitintutors'] = 'Turnitin Tutors';
 $string['turnitintutorsadd'] = 'Add Turnitin Tutor';
 $string['turnitintutorsallenrolled'] = 'All Tutors are enrolled on Turnitin';
-$string['turnitintutors_desc'] = 'The selected Tutors below are enrolled as tutors on this Turnitin Class. Enrolled tutors can gain access to this class by logging in to the Turnitin web site.';
+// START UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
+$string['turnitintutors_desc'] = 'The selected Tutors below are enrolled as tutors on this Turnitin Class.';
+// END UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
 $string['duplicatesfound'] = 'Duplicate copies of the same Turnitin assignments were found, duplicates occur when one or more Moodle Direct assignment is connected to the same one Turnitin assignment via the Turnitin API. This is known to cause issues, most notably submissions made to one of the duplicates will show up in the submission inbox of the others. To fix this you should either delete the duplicate assignments or reset the course where the duplicate assignments are.<br /><br />The following duplicates were found:';
 $string['erater'] = 'Enable e-rater grammar check';
 $string['eraternoun'] = 'E-rater';
@@ -247,7 +259,9 @@ $string['migrationcoursegeterror'] = 'Unable to get any of the classes from Turn
 $string['migrationassignmentgeterror'] = 'Unable to get any of the assignments from Turnitin';
 $string['getassignmenterror'] = 'Could not get migration assignments from Turnitin';
 $string['checkupdateavailableerror'] = 'Could not check for Moodle Direct version update';
-$string['maxmarkserror'] = 'Maximum Marks must be between 0 and 100';
+// START UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
+$string['maxmarkserror'] = 'Maximum points must be between 0 and 100';
+// END UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
 $string['nosubmissiondataavailable'] = 'No other submission data available';
 $string['nointegration'] = 'No Integration';
 $string['testingconnection'] = 'Testing Connection to Turnitin';
@@ -371,7 +385,9 @@ $string['noscriptsummary'] = 'Turnitin requires Javascript but your browser does
 $string['noscriptula'] = '(As you do not have javascript enabled you will have to manually refresh this page before you can make a submission after accepting the Turnitin User Agreement)';
 $string['showsummary'] = 'Show assignment summary';
 $string['hidesummary'] = 'Hide assignment summary';
-$string['marksavailable'] = 'Marks Available';
+// START UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
+$string['marksavailable'] = 'Grades Available';
+// END UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
 $string['deletepart'] = 'Delete Part';
 $string['partdeleted'] = 'Assignment Part has been deleted';
 $string['turnitin'] = 'Turnitin';
@@ -384,8 +400,10 @@ $string['otherrubric'] = 'Use rubric belonging to other instructor';
 $string['attachrubricnote'] = 'Note: students will be able to view attached rubrics and their content prior to submitting.';
 $string['changerubricwarning'] = 'Changing or detaching a rubric will remove all existing rubric scoring from papers in this assignment, including scorecards which have previously been marked. Overall grades for previously graded papers will remain.';
 $string['launchrubricmanager'] = 'Launch Rubric Manager';
-$string['launchrubricview'] = 'View the Rubric used for marking';
-$string['launchrubricviewshort'] = 'Marking Rubric';
+// START UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
+$string['launchrubricview'] = 'View the Rubric used for grading';
+$string['launchrubricviewshort'] = 'Grading Rubric';
+// END UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
 $string['launchquickmarkmanager'] = 'Launch Quickmark Manager';
 $string['launchpeermarkmanager'] = 'Launch Peermark Manager';
 $string['launchpeermarkreviews'] = 'Launch Peermark Reviews';
@@ -429,7 +447,9 @@ $string['submitnothing'] = 'Enable grading for this student without submission';
 $string['submitnothingwarning'] = 'Clicking on the gray pen for a student who hasn&#39;t submitted a file creates a grading template, which will allow you to give the student GradeMark feedback for the assignment. A grading template takes the place of a submission and will prevent the student from submitting to assignments where resubmission is not allowed.<br><br>Are you sure you want to grade without a submission?';
 $string['draftsubmit'] = 'When should the file be submitted to Turnitin?';
 $string['submitondraft'] = 'Submit file when first uploaded';
-$string['submitonfinal'] = 'Submit file when student sends for marking';
+// START UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
+$string['submitonfinal'] = 'Submit file when student sends for grading';
+// END UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
 $string['turnitindiagnostic'] = 'Enable Diagnostic Mode';
 $string['turnitindiagnostic_desc'] = '<b>[Caution]</b><br />Enable Diagnostic mode only to track down problems with the Turnitin API.';
 $string['autorefreshgrades'] = 'Auto Refresh Grades / Scores';
@@ -467,7 +487,9 @@ $string['turnitinula'] = 'You must accept the latest Turnitin User Agreement bef
 $string['upgradenotavailable'] = 'No Upgrade Available';
 $string['turnitintoolofflineerror'] = 'We are experiencing a temporary problem. Please try again shortly.';
 $string['offlinestatus'] = 'Turnitin has been set to offline. (The variable $CFG->tiioffline has been set to true.)';
-$string['disableanonconfirm'] = 'Doing this will permanently disable anonymous marking on this assignment. Are you sure?';
+// START UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
+$string['disableanonconfirm'] = 'Doing this will permanently disable anonymous grading on this assignment. Are you sure?';
+// END UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
 $string['uniquepartname'] = 'Part name must be unique';
 $string['closebutton'] = 'Close';
 $string['reportgenspeed_help'] = 'There are three options for this assignment setting: &#39;Generate reports immediately (resubmissions are not allowed)&#39;, &#39;Generate reports immediately (resubmissions are allowed until due date)&#39;, and &#39;Generate reports on due date (resubmissions are allowed until due date)&#39;<br /><br />The option &#39;Generate reports immediately (resubmissions are not allowed)&#39; generates the Originality Report immediately when a student makes a submission. With this option selected your students will not be able to resubmit to the assignment.<br /><br />To allow resubmissions, select &#39;Generate reports immediately (resubmissions are allowed until due date)&#39; option. This allows students to continuously resubmit papers to the assignment until the due date. It may take up to 24 hours to process Originality Reports for resubmissions.<br /><br />The option &#39;Generate reports on due date (resubmissions are allowed until due date)&#39; will only generate an Originality Report on the assignment&#39;s due date. This setting will make it so all papers submitted to the assignment will be compared against each other when the Originality Reports are created.';
@@ -521,7 +543,9 @@ $string['nonsubmittersmessageerror'] = 'Please provide a message for the email';
 $string['nonsubmittersformsuccess'] = 'Your message to non-submitters has been sent.';
 $string['messageprovider:nonsubmitters'] = 'Turnitin Assignment Non Submitter notifications';
 $string['checkagainstnote'] = 'Note: If you do not select "Yes" for at least one of the "Check against..." options below then an Originality report will NOT be generated.';
-$string['anonblindmarkingnote'] = 'Note: The separate Turnitin anonymous marking setting has been removed. Turnitin will use Moodle\'s blind marking setting to determine the anonymous marking setting.';
+// START UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
+$string['anonblindmarkingnote'] = 'Note: The separate Turnitin anonymous grading setting has been removed. Turnitin will use Moodle\'s blind grading setting to determine the anonymous grading setting.';
+// END UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
 $string['displaygradesas'] = 'Grade Display';
 $string['displaygradesas_help'] = 'This option sets the display mode for grades the options are display as a percentage or display as a fraction ie 45/60.';
 $string['displaygradesasfraction'] = 'Show grades as Fraction (e.g. 89/100)';
@@ -552,3 +576,6 @@ $string['tiidebugginglogs'] = 'Debugging and Logging';
 $string['diagnosticoptions_0'] = 'Off';
 $string['diagnosticoptions_1'] = 'Standard';
 $string['diagnosticoptions_2'] = 'Debugging';
+// START UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
+$string['assignmentdefault'] = 'Assignment defaults';
+// END UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.

@@ -318,7 +318,11 @@ class mod_turnitintooltwo_mod_form extends moodleform_mod {
         $mform->addHelpButton('autoupdates', 'autorefreshgrades', 'turnitintooltwo');
         $mform->setDefault('autoupdates', 1);
 
-        $mform->addElement('checkbox', 'set_instructor_defaults', '', " ".get_string('setinstructordefaults', 'turnitintooltwo'));
+        // START UCLA-MOD: CCLE-5751 Missing label.
+        // $mform->addElement('checkbox', 'set_instructor_defaults', '', " ".get_string('setinstructordefaults', 'turnitintooltwo'));
+        $mform->addElement('checkbox', 'set_instructor_defaults', get_string('assignmentdefault', 'turnitintooltwo'),
+            " ".get_string('setinstructordefaults', 'turnitintooltwo'));
+        // END UCLA-MOD: CCLE-5751 Missing label.
         $mform->setDefault('set_instructor_defaults', false);
         $mform->addHelpButton('set_instructor_defaults', 'setinstructordefaults', 'turnitintooltwo');
 

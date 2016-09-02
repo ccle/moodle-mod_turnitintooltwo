@@ -1086,14 +1086,12 @@
             });
         }
 
-        function initialiseUploadBox(scope, submission_id, part_id, user_id) {
-            var identifier = ".upload_box";
-            if (scope == "row") {
-                identifier = "#upload_" + submission_id + "_" + part_id + "_" + user_id;
-            }
-
-            var colorBoxWidth = "80%";
-            var colorBoxHeight = "80%";
+    function lightBoxCloseButton() {
+        // START UCLA MOD: CCLE-5834 Turnitin V2 close button.
+        // $('body').append('<div id="tii_close_bar"><a href="#" onclick="$.colorbox.close(); return false;">' + M.str.turnitintooltwo.closebutton + '</a></div>');
+        $('#cboxWrapper').append('<div id="tii_close_bar"><a href="#" onclick="$.colorbox.close(); return false;">' + M.str.turnitintooltwo.closebutton + '</a></div>');
+        // END UCLA MOD: CCLE-5834 Turnitin V2 close button.
+    }
 
             $(identifier).colorbox({
                 onLoad: function () {

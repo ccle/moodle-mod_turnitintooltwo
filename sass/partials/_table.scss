@@ -46,11 +46,17 @@
     }
 
     th {
-        padding: $table-head-padding 20px !important;
+        /* START UCLA-MOD: CCLE-5789 Improve student name spacing. */
+        /* padding: $table-head-padding 20px !important; */
+        padding: $table-head-padding 5px !important;
+        /* START UCLA-MOD: CCLE-5789 Improve student name spacing. */
     }
 
     td {
-        padding: $table-padding 10px !important;
+        /* START UCLA-MOD: CCLE-5789 Improve student name spacing. */
+        /* padding: $table-padding 10px !important; */
+        padding: $table-padding 5px !important;
+        /* END UCLA-MOD: CCLE-5789 Improve student name spacing. */
         font-size: 13px;
         vertical-align: top;
     }

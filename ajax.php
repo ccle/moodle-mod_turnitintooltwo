@@ -476,7 +476,29 @@ switch ($action) {
         $return["aaData"] = array();
         if (has_capability('mod/turnitintooltwo:grade', context_module::instance($cm->id))) {
             $role = required_param('role', PARAM_ALPHA);
-            $members = $turnitintooltwoassignment->get_tii_users_by_role($role);
+            
+            // START UCLA MOD: CCLE-6336 Turnitin tutor list.
+            // $members = $turnitintooltwoassignment->get_tii_users_by_role($role);
+            $members = $turnitintooltwoassignment->get_tii_users_by_role($role, 'mdl');
+            $course = $turnitintooltwoassignment->get_course_data($turnitintooltwoassignment->turnitintooltwo->course);
+            $memberids= array_flip(array_keys($members)); // User who has role dropped but still have Tii membership.
+            $capability = ($role == 'Instructor')? 'mod/turnitintooltwo:grade' : 'mod/turnitintooltwo:submit';
+            $moodleusers = get_users_by_capability(context_module::instance($cm->id), $capability, 'u.id',
+                                                '', '', '', groups_get_activity_group($cm));
+                        
+            // Register new user with TII with new membership.
+            foreach($moodleusers as $mdluserid => $moodleuser) {
+                if (!array_key_exists($mdluserid, $members)) {
+                    $user = new turnitintooltwo_user($mdluserid, "Instructor");
+                    $user->join_user_to_class($course->turnitin_cid);
+                } 
+                unset($memberids[$mdluserid]);   
+            }
+            // User whose role is dropped, remove membership from class.
+            foreach ($memberids as $k => $v) {
+                unset($members[$k]); // Do not include the one does not have the right role.
+            }
+            // END UCLA MOD: CCLE-6336 Turnitin tutor list. 
 
             $PAGE->set_context(context_module::instance($cm->id));
             $turnitintooltwoview = new turnitintooltwo_view();

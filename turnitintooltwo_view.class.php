@@ -1961,11 +1961,13 @@ class turnitintooltwo_view {
         global $CFG, $OUTPUT;
 
         // START UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
-        /* $moodletutors = get_users_by_capability(context_module::instance($cm->id), 'mod/turnitintooltwo:grade',
+        $moodletutors = get_users_by_capability(context_module::instance($cm->id), 'mod/turnitintooltwo:grade',
                                                         'u.id, u.firstname, u.lastname, u.username');
-         */           
+        /*          
            $course = turnitintooltwo_assignment::get_course_data($cm->course);
            $moodletutors = local_ucla_core_edit::get_course_graders($course);
+         * 
+         */
         // END UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
 
         // Populate elements array which will generate the form elements

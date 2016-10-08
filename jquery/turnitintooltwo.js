@@ -423,10 +423,6 @@
         $('.tii_table_functions').each(function () {
             var part_id = $(this).attr('id').split('tii_table_functions_')[1];
 
-            var tii_table_functions = $("#tii_table_functions_" + part_id).html();
-            $('#tii_table_functions_' + part_id).remove();
-            $('#' + part_id + '_length').after(tii_table_functions);
-            $('.messages_inbox').show();
 
             $('#refresh_' + part_id).show();
             $('#refreshing_' + part_id).hide();
@@ -571,7 +567,10 @@
             $('.tii_peermark_manager_launch').colorbox({
                 iframe: true, width: "802px", height: "772px", opacity: "0.7", className: "peermark_manager", transition: "none",
                 onLoad: function () {
-                    lightBoxCloseButton();
+                    // START UCLA MOD: CCLE-6297 Launch peermark manager close button.
+                    //lightBoxCloseButton();
+                    smallTiiCloseButton();
+                    // END UCLA MOD: CCLE-6297.
                     getLoadingGif();
                 },
                 onCleanup: function () {
@@ -1197,6 +1196,11 @@
         function lightBoxCloseButton() {
             $('body').append('<div id="tii_close_bar"><a href="#" onclick="jQuery(\'#cboxClose\').click(); return false;">' + M.str.turnitintooltwo.closebutton + '</a></div>');
         }
+        // START UCLA MOD: CCLE-6297 Launch peermark manager close button.
+        function smallTiiCloseButton() {
+            $('#cboxWrapper').append('<div id="small_tii_close_button"><a href="#" onclick="$.colorbox.close(); return false;">' + M.str.turnitintooltwo.closebutton + '</a></div>');
+        }
+        // END UCLA MOD: CCLE-6297.
 
         function initialiseDigitalReceipt() {
             if ($('.tii_digital_receipt').length > 0) {

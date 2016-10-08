@@ -85,3 +85,26 @@ legend {
     border-style: none !important;
 }
 // END UCLA MOD: CCLE-5834 Turnitin V2 close button.
+
+// START UCLA MOD: CCLE-6297 Launch peermark manager close button.
+#small_tii_close_button {
+    background: none !important;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 45px;
+
+    a {
+        color: #000;
+        display: block;
+        width: 180px;
+        text-align: center;
+        float: right;
+        height: 45px;
+        line-height: 43px;
+    }
+}
+// END UCLA MOD

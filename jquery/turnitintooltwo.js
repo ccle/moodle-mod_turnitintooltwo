@@ -423,10 +423,24 @@
         $('.tii_table_functions').each(function () {
             var part_id = $(this).attr('id').split('tii_table_functions_')[1];
 
-            var tii_table_functions = $("#tii_table_functions_" + part_id).html();
-            $('#tii_table_functions_' + part_id).remove();
-            $('#' + part_id + '_length').after(tii_table_functions);
-            $('.messages_inbox').show();
+    // Open an iframe light box containing the Peermark Manager
+    if ($('.tii_peermark_manager_launch').length > 0) {
+        $('.tii_peermark_manager_launch').colorbox({
+            iframe:true, width:"802px", height:"772px", opacity: "0.7", className: "peermark_manager", transition: "none",
+            onLoad: function() {
+                smallTiiCloseButton();
+                getLoadingGif();
+            },
+            onCleanup:function() {
+                $('#tii_close_bar').remove();
+                hideLoadingGif();
+            },
+            onClosed:function() {
+                var idStr = $(this).attr("id").split("_");
+                refreshPeermarkAssignments(idStr[2], 1);
+            }
+        });
+    }
 
             $('#refresh_' + part_id).show();
             $('#refreshing_' + part_id).hide();
@@ -1092,6 +1106,12 @@
         $('#cboxWrapper').append('<div id="tii_close_bar"><a href="#" onclick="$.colorbox.close(); return false;">' + M.str.turnitintooltwo.closebutton + '</a></div>');
         // END UCLA MOD: CCLE-5834 Turnitin V2 close button.
     }
+    
+    // START UCLA MOD: CCLE-6297 Launch peermark manager close button.
+    function smallTiiCloseButton() {
+        $('#cboxWrapper').append('<div id="small_tii_close_button"><a href="#" onclick="$.colorbox.close(); return false;">' + M.str.turnitintooltwo.closebutton + '</a></div>');
+    }
+    // END UCLA MOD
 
             $(identifier).colorbox({
                 onLoad: function () {

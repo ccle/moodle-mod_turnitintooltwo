@@ -470,7 +470,7 @@ jQuery(document).ready(function($) {
         $('.tii_peermark_manager_launch').colorbox({
             iframe:true, width:"802px", height:"772px", opacity: "0.7", className: "peermark_manager", transition: "none",
             onLoad: function() {
-                lightBoxCloseButton();
+                smallTiiCloseButton();
                 getLoadingGif();
             },
             onCleanup:function() {
@@ -1068,6 +1068,12 @@ jQuery(document).ready(function($) {
         $('#cboxWrapper').append('<div id="tii_close_bar"><a href="#" onclick="$.colorbox.close(); return false;">' + M.str.turnitintooltwo.closebutton + '</a></div>');
         // END UCLA MOD: CCLE-5834 Turnitin V2 close button.
     }
+    
+    // START UCLA MOD: CCLE-6297 Launch peermark manager close button.
+    function smallTiiCloseButton() {
+        $('#cboxWrapper').append('<div id="small_tii_close_button"><a href="#" onclick="$.colorbox.close(); return false;">' + M.str.turnitintooltwo.closebutton + '</a></div>');
+    }
+    // END UCLA MOD
 
     function initialiseDigitalReceipt() {
         if ($('.tii_digital_receipt').length > 0) {

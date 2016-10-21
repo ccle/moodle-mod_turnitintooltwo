@@ -397,7 +397,12 @@ if (!empty($action)) {
                 $submittedusers = $DB->get_records('turnitintooltwo_submissions', $params, '', 'userid');
 
                 // Send message to all non submitted users.
-                $nonsubmittedusers = array_diff_key((array)$allusers, (array)$submittedusers);
+                // START UCLA MOD: CCLE-6376 TurnitinV2 notify non-submitter email sent to inactive student.
+                // $nonsubmittedusers = array_diff_key((array)$allusers, (array)$submittedusers);
+                // Get suspended users.
+                $suser = get_suspended_userids($context);
+                $nonsubmittedusers = array_diff_key((array)$allusers, (array)$suser, (array)$submittedusers);
+                // END UCLA MOD: CCLE-6376
                 foreach ($nonsubmittedusers as $nonsubmitteduser) {
                     //Send a message to the user's Moodle inbox with the digital receipt.
                     $nonsubmitters->send_message($nonsubmitteduser->id, $subject, $message);

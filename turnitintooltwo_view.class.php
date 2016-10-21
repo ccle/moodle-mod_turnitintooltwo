@@ -1925,8 +1925,12 @@ class turnitintooltwo_view {
         }
 
         $memberdata = array();
-        foreach ($members as $k => $v) {
-            $membermoodleid = turnitintooltwo_user::get_moodle_user_id($k);
+        foreach ($members as $membermoodleid => $v) {
+            
+            // START UCLA MOD: CCLE-6336 Turnitin tutor list.
+            // $membermoodleid = turnitintooltwo_user::get_moodle_user_id($k);
+            // END UCLA MOD: CCLE-6336 Turnitin tutor list.
+            
             if ($membermoodleid > 0) {
                 $user = $DB->get_record('user', array('id' => $membermoodleid));
 
@@ -1960,14 +1964,9 @@ class turnitintooltwo_view {
     public function show_add_tii_tutors_form($cm, $tutors) {
         global $CFG, $OUTPUT;
 
-        // START UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
-        /* $moodletutors = get_users_by_capability(context_module::instance($cm->id), 'mod/turnitintooltwo:grade',
+        $moodletutors = get_users_by_capability(context_module::instance($cm->id), 'mod/turnitintooltwo:grade',
                                                         'u.id, u.firstname, u.lastname, u.username');
-         */           
-           $course = turnitintooltwo_assignment::get_course_data($cm->course);
-           $moodletutors = local_ucla_core_edit::get_course_graders($course);
-        // END UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
-
+  
         // Populate elements array which will generate the form elements
         // Each element is in following format: (type, name, label, helptext (minus _help), options (if select).
         $elements = array();

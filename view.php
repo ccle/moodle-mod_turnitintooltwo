@@ -402,7 +402,7 @@ if (!empty($action)) {
                 // Get suspended users.
                 $suser = get_suspended_userids($context);
                 $nonsubmittedusers = array_diff_key((array)$allusers, (array)$suser, (array)$submittedusers);
-                // END UCLA MOD
+                // END UCLA MOD: CCLE-6376
                 foreach ($nonsubmittedusers as $nonsubmitteduser) {
                     //Send a message to the user's Moodle inbox with the digital receipt.
                     $nonsubmitters->send_message($nonsubmitteduser->id, $subject, $message);

@@ -25,7 +25,10 @@ $string['coursegeterror'] = 'Could not get course data';
 $string['courseiderror'] = 'Course ID is incorrect';
 $string['deleteconfirm'] = 'Are you sure you want to delete this submission?\n\nThis action cannot be undone.';
 $string['deletesubmission'] = 'Delete Submission';
-$string['downloadsubmission'] = 'Download Submission';
+// START UCLA MOD: CCLE-6303 - Download icon tooltip.
+// $string['downloadsubmission'] = 'Download Submission';
+$string['downloadsubmission'] = 'Download submission';
+// END UCLA MOD: CCLE-6303 - Download icon tooltip.
 $string['dtdue'] = 'Due Date';
 $string['dtpost'] = 'Post Date';
 $string['dtstart'] = 'Start Date';

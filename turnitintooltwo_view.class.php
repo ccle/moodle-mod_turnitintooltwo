@@ -1408,12 +1408,23 @@ class turnitintooltwo_view {
 
         // Download submission in original format.
         if (!empty($submission->submission_objectid) && !empty($submission->id) && !$submission->submission_acceptnothing) {
+
+            // START UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button and CCLE-6303 Add tooltip for download icon
+            /*
             $download = $OUTPUT->box(
                 html_writer::tag('i', '', array('title' => get_string('downloadsubmission', 'turnitintooltwo'),
                     'class' => 'fa fa-download fa-lg')),
                 'download_original_open',
                 'downloadoriginal_' . $submission->submission_objectid . "_" . $partid . "_" . $moodleuserid
             );
+            */
+            $download = $OUTPUT->box(
+                html_writer::tag('i', '', array('title' => get_string('downloadsubmission', 'turnitintooltwo'), 
+                'class' => 'fa fa-download fa-lg')), 'download_original_open',
+                'downloadoriginal_' . $submission->submission_objectid . "_" . $partid . "_" . $moodleuserid
+            );
+            // END UCLA-MOD: CCLE-5544 and CCLE-6303
+
             $download .= $OUTPUT->box('', 'launch_form', 'downloadoriginal_form_'.$submission->submission_objectid);
 
             // Add in LTI launch form incase Javascript is disabled.

@@ -153,7 +153,10 @@ $string['turnitindeletionerror'] = 'Turnitin submission deletion failed. The loc
 $string['turnitinenrolstudents'] = 'Enrol All Students';
 $string['turnitinloading'] = 'Synchronising Data';
 $string['turnitinpart'] = 'Part {$a}';
-$string['turnitinrefreshsubmissions'] = 'Refresh Submissions';
+// START UCLA MOD: CCLE-6300 Trash can tooltip.
+// $string['turnitinrefreshsubmissions'] = 'Refresh Submissions';
+$string['turnitinrefreshsubmissions'] = 'Refresh Submission';
+// START UCLA MOD: CCLE-6300.
 $string['turnitinsecretkey'] = 'Turnitin Shared Key';
 $string['turnitinsecretkey_desc'] = '<b>[Required]</b><br />Enter your Turnitin Shared Key<br /><i>(Set by your Turnitin Administrator)</i>';
 $string['turnitintooltwo'] = 'Turnitin Tool';
@@ -328,6 +331,9 @@ $string['copyrightagreementerror'] = 'Please check the box to indicate that you 
 $string['updatepart'] = 'Update Part';
 $string['grademark'] = 'GradeMark';
 $string['launchgrademark'] = 'GradeMark';
+// START UCLA MOD: CCLE-6300 Trash can tooltip.
+$string['deletesubmission'] = 'Delete submission';
+// END UCLA MOD: CCLE-6300
 $string['submissiondeleted'] = 'Submission Deleted';
 $string['tutoradded'] = 'Tutor has been added to the course in Turnitin';
 $string['tutoraddingerror'] = 'There has been a problem adding the tutor to the course in Turnitin';

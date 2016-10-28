@@ -589,3 +589,6 @@ $string['assignmentdefault'] = 'Assignment defaults';
 $string['exportexcel'] = 'Export to Excel';
 $string['exportpdf'] = 'Export to PDF';
 $string['exportoriginal'] = 'Export to original format';
+// START UCLA MOD: CCLE-6410-Pencil-icon-tooltip.
+$string['edit'] = 'Edit';
+// END UCLA MOD: CCLE-6410.

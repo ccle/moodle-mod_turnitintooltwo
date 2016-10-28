@@ -153,7 +153,10 @@ $string['turnitindeletionerror'] = 'Turnitin submission deletion failed. The loc
 $string['turnitinenrolstudents'] = 'Enrol All Students';
 $string['turnitinloading'] = 'Synchronising Data';
 $string['turnitinpart'] = 'Part {$a}';
-$string['turnitinrefreshsubmissions'] = 'Refresh Submissions';
+// START UCLA MOD: CCLE-6300 Trash can tooltip.
+// $string['turnitinrefreshsubmissions'] = 'Refresh Submissions';
+$string['turnitinrefreshsubmissions'] = 'Refresh Submission';
+// START UCLA MOD: CCLE-6300.
 $string['turnitinsecretkey'] = 'Turnitin Shared Key';
 $string['turnitinsecretkey_desc'] = '<b>[Required]</b><br />Enter your Turnitin Shared Key<br /><i>(Set by your Turnitin Administrator)</i>';
 $string['turnitintooltwo'] = 'Turnitin Tool';

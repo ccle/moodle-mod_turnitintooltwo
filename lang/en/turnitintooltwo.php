@@ -65,7 +65,12 @@ $string['maxmarks'] = 'Maximum grade';
 $string['pluginname'] = 'Turnitin Assignment 2';
 $string['modulename'] = 'Turnitin Assignment 2';
 $string['modulenameplural'] = 'Turnitin Assignments';
-$string['modulenamewithv2plural'] = 'Turnitin Assignments (V2)';
+// START UCLA MOD: CCLE-6293-Auto-generated-link.
+// $string['modulenameplural'] = 'Turnitin Assignments';
+// $string['modulenamewithv2plural'] = 'Turnitin Assignments (V2)';
+$string['modulenameplural'] = 'Turnitin';
+$string['modulenamewithv2plural'] = 'Turnitin';
+// END UCLA MOD: CCLE-6293.
 $string['moduleversion'] = 'Version';
 $string['mysubmissions'] = 'My Submissions';
 $string['nolimit'] = 'No Limit';

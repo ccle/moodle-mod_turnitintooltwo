@@ -1349,14 +1349,13 @@ class turnitintooltwo_view {
                 $class = $canresubmit && ($tutorbeforeduedate || $allowedlate) ? 'graded_warning' : '';
 
                 // Output grademark icon.
-                // START UCLA MOD: CCLE-6301-Blue pencil icon tooltip
+                // START UCLA MOD: CCLE-6301 - Blue pencil icon tooltip
                 /*
                 $grade = $OUTPUT->box(
                     html_writer::tag('i', '', array('class' => 'fa fa-pencil fa-lg gm-blue')),
                     'grademark_open ' . $class, 'grademark_' . $submission->submission_objectid . '_' . $partid . '_' . $moodleuserid,
                     array('title' => $CFG->wwwroot . '/mod/turnitintooltwo/view.php?id=' . $cm->id)
                 );
-                 * 
                  */
                 $grade = $OUTPUT->box(
                     html_writer::tag('i', '', array('title' => get_string('submissiongrade', 'turnitintooltwo'),

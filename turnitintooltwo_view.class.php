@@ -1549,7 +1549,6 @@ class turnitintooltwo_view {
                     html_writer::tag('i', '', array('class' => 'fa fa-trash-o fa-lg')),
                     $attributes
                 );
-                 * 
                  */
                 $delete = html_writer::link(
                     $CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.$cm->id.'&part='.$partid.'&action=deletesubmission&sub='.$submission->id.'&sesskey='.sesskey(),
@@ -1572,7 +1571,6 @@ class turnitintooltwo_view {
                     html_writer::tag('i', '', array('class' => 'fa fa-trash-o fa-lg')),
                     $attributes
                 );
-                 * 
                  */
                 $delete = html_writer::link(
                     $CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.$cm->id.'&part='.$partid.'&action=deletesubmission&sub='.$submission->id.'&sesskey='.sesskey(),

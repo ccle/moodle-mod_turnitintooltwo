@@ -24,7 +24,10 @@ $string['copyrightagreement'] = 'By checking this box, I confirm that this submi
 $string['coursegeterror'] = 'Could not get course data';
 $string['courseiderror'] = 'Course ID is incorrect';
 $string['deleteconfirm'] = 'Are you sure you want to delete this submission?\n\nThis action cannot be undone.';
-$string['deletesubmission'] = 'Delete Submission';
+// START UCLA MOD: CCLE-6300 - Trash can tooltip.
+// $string['deletesubmission'] = 'Delete Submission';
+$string['deletesubmission'] = 'Delete submission';
+// END UCLA MOD: CCLE-6300.
 $string['downloadsubmission'] = 'Download Submission';
 $string['dtdue'] = 'Due Date';
 $string['dtpost'] = 'Post Date';
@@ -153,7 +156,10 @@ $string['turnitindeletionerror'] = 'Turnitin submission deletion failed. The loc
 $string['turnitinenrolstudents'] = 'Enrol All Students';
 $string['turnitinloading'] = 'Synchronising Data';
 $string['turnitinpart'] = 'Part {$a}';
-$string['turnitinrefreshsubmissions'] = 'Refresh Submissions';
+// START UCLA MOD: CCLE-6300 Trash can tooltip.
+// $string['turnitinrefreshsubmissions'] = 'Refresh Submissions';
+$string['turnitinrefreshsubmissions'] = 'Refresh submission';
+// START UCLA MOD: CCLE-6300.
 $string['turnitinsecretkey'] = 'Turnitin Shared Key';
 $string['turnitinsecretkey_desc'] = '<b>[Required]</b><br />Enter your Turnitin Shared Key<br /><i>(Set by your Turnitin Administrator)</i>';
 $string['turnitintooltwo'] = 'Turnitin Tool';

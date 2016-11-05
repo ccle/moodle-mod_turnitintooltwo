@@ -739,6 +739,8 @@ class turnitintooltwo_view {
         // Allow part name to be editable if a tutor is logged in.
         $textfield = $partdetails[$partid]->partname;
         if ($istutor) {
+            // START UCLA MOD: CCLE-6410 - Pencil icon tooltip
+            /*
             $textfield = html_writer::link('#', $partdetails[$partid]->partname,
                                             array('class' => 'editable_text editable_text_'.$partid,
                                                 'data-type' => 'text', 'data-pk' => $partid, 'data-name' => 'partname',
@@ -746,6 +748,16 @@ class turnitintooltwo_view {
                                                 'data-params' => "{ 'assignment': ".
                                                                     $turnitintooltwoassignment->turnitintooltwo->id.", ".
                                                                     "'action': 'edit_field', 'sesskey': '".sesskey()."' }"));
+             */
+            $textfield = html_writer::link('#', $partdetails[$partid]->partname,
+                                            array('title' => get_string('edit', 'turnitintooltwo'),
+                                                'class' => 'editable_text editable_text_'.$partid,
+                                                'data-type' => 'text', 'data-pk' => $partid, 'data-name' => 'partname',
+                                                'id' => 'part_name_'.$partid,
+                                                'data-params' => "{ 'assignment': ".
+                                                                    $turnitintooltwoassignment->turnitintooltwo->id.", ".
+                                                                    "'action': 'edit_field', 'sesskey': '".sesskey()."' }"));
+            // END UCLA MOD: CCLE-6410
         }
         $cells[0] = new html_table_cell($links.$turnitintooltwoassignment->turnitintooltwo->name." (".$textfield.") ");
 
@@ -754,12 +766,23 @@ class turnitintooltwo_view {
                         userdate($partdetails[$partid]->dtstart, '%d %b %Y - %H:%M') :
                         userdate($partdetails[$partid]->dtstart, '%d %h %Y - %H:%M');
         if ($istutor) {
+            // START UCLA MOD: CCLE-6410 - Pencil icon tooltip
+            /*
             $datefield = html_writer::link('#', $datefield,
                                             array('class' => 'editable_date editable_date_'.$partid,
                                                 'data-pk' => $partid, 'data-name' => 'dtstart', 'id' => 'date_start_'.$partid,
                                                 'data-params' => "{ 'assignment': ".
                                                                     $turnitintooltwoassignment->turnitintooltwo->id.", ".
                                                                     "'action': 'edit_field', 'sesskey': '".sesskey()."' }"));
+             */
+            $datefield = html_writer::link('#', $datefield,
+                                            array('title' => get_string('edit', 'turnitintooltwo'),
+                                                'class' => 'editable_date editable_date_'.$partid,
+                                                'data-pk' => $partid, 'data-name' => 'dtstart', 'id' => 'date_start_'.$partid,
+                                                'data-params' => "{ 'assignment': ".
+                                                                    $turnitintooltwoassignment->turnitintooltwo->id.", ".
+                                                                    "'action': 'edit_field', 'sesskey': '".sesskey()."' }"));
+            // END UCLA MOD: CCLE-6410
         }
         $cells[1] = new html_table_cell($datefield);
         $cells[1]->attributes['class'] = 'data';
@@ -769,6 +792,8 @@ class turnitintooltwo_view {
                         userdate($partdetails[$partid]->dtdue, '%d %b %Y - %H:%M') :
                         userdate($partdetails[$partid]->dtdue, '%d %h %Y - %H:%M');
         if ($istutor) {
+            // START UCLA MOD: CCLE-6410 - Pencil icon tooltip
+            /*
             $datefield = html_writer::link('#', $datefield,
                                             array('data-anon' => $turnitintooltwoassignment->turnitintooltwo->anon,
                                                 'class' => 'editable_postdue editable_date editable_date_'.$partid,
@@ -776,6 +801,16 @@ class turnitintooltwo_view {
                                                 'data-params' => "{ 'assignment': ".
                                                                     $turnitintooltwoassignment->turnitintooltwo->id.", ".
                                                                     "'action': 'edit_field', 'sesskey': '".sesskey()."' }"));
+             */
+            $datefield = html_writer::link('#', $datefield,
+                                            array('data-anon' => $turnitintooltwoassignment->turnitintooltwo->anon,
+                                                'title' => get_string('edit', 'turnitintooltwo'),
+                                                'class' => 'editable_postdue editable_date editable_date_'.$partid,
+                                                'data-pk' => $partid, 'data-name' => 'dtdue', 'id' => 'date_due_'.$partid,
+                                                'data-params' => "{ 'assignment': ".
+                                                                    $turnitintooltwoassignment->turnitintooltwo->id.", ".
+                                                                    "'action': 'edit_field', 'sesskey': '".sesskey()."' }"));
+            // END UCLA MOD: CCLE-6410
         }
         $cells[2] = new html_table_cell($datefield);
         $cells[2]->attributes['class'] = 'data';
@@ -785,6 +820,8 @@ class turnitintooltwo_view {
                         userdate($partdetails[$partid]->dtpost, '%d %b %Y - %H:%M') :
                         userdate($partdetails[$partid]->dtpost, '%d %h %Y - %H:%M');
         if ($istutor) {
+            // START UCLA MOD: CCLE-6300 Trash can tooltip.
+            /*
             $datefield = html_writer::link('#', $datefield,
                                             array('data-anon' => $turnitintooltwoassignment->turnitintooltwo->anon,
                                                 'data-unanon' => $partdetails[$partid]->unanon,
@@ -794,6 +831,19 @@ class turnitintooltwo_view {
                                                 'data-params' => "{ 'assignment': ".
                                                                     $turnitintooltwoassignment->turnitintooltwo->id.", ".
                                                                     "'action': 'edit_field', 'sesskey': '".sesskey()."' }"));
+             * 
+             */
+            $datefield = html_writer::link('#', $datefield,
+                                            array('data-anon' => $turnitintooltwoassignment->turnitintooltwo->anon,
+                                                'data-unanon' => $partdetails[$partid]->unanon,
+                                                'data-submitted' => $partdetails[$partid]->submitted,
+                                                'title' => get_string('edit', 'turnitintooltwo'),
+                                                'class' => 'editable_postdue editable_date editable_date_'.$partid,
+                                                'data-pk' => $partid, 'data-name' => 'dtpost', 'id' => 'date_post_'.$partid,
+                                                'data-params' => "{ 'assignment': ".
+                                                                    $turnitintooltwoassignment->turnitintooltwo->id.", ".
+                                                                    "'action': 'edit_field', 'sesskey': '".sesskey()."' }"));
+            // END UCLA MOD: CCLE-6300.
         }
         $cells[3] = new html_table_cell($datefield);
         $cells[3]->attributes['class'] = 'data';
@@ -815,12 +865,23 @@ class turnitintooltwo_view {
             // Allow marks to be editable if a tutor is logged in.
             $textfield = $partdetails[$partid]->maxmarks.$rubricviewlink;
             if ($istutor) {
+                // START UCLA MOD: CCLE-6410 - Pencil icon tooltip
+                /*
                 $textfield = html_writer::link('#', $partdetails[$partid]->maxmarks,
                                                 array('class' => 'editable_text editable_text_'.$partid, 'id' => 'marks_'.$partid,
                                                     'data-type' => 'text', 'data-pk' => $partid, 'data-name' => 'maxmarks',
                                                     'data-params' => "{ 'assignment': ".
                                                                         $turnitintooltwoassignment->turnitintooltwo->id.", ".
                                                                         "'action': 'edit_field', 'sesskey': '".sesskey()."' }"));
+                 */
+                $textfield = html_writer::link('#', $partdetails[$partid]->maxmarks,
+                                                array('title' => get_string('edit', 'turnitintooltwo'),
+                                                    'class' => 'editable_text editable_text_'.$partid, 'id' => 'marks_'.$partid,
+                                                    'data-type' => 'text', 'data-pk' => $partid, 'data-name' => 'maxmarks',
+                                                    'data-params' => "{ 'assignment': ".
+                                                                        $turnitintooltwoassignment->turnitintooltwo->id.", ".
+                                                                        "'action': 'edit_field', 'sesskey': '".sesskey()."' }"));                
+                // END UCLA MOD: CCLE-6410
             }
             $cells[4] = new html_table_cell($textfield);
             $cells[4]->attributes['class'] = 'data';

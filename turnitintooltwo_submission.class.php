@@ -634,9 +634,14 @@ class turnitintooltwo_submission {
                 $message = $this->receipt->build_message($input);
                 $this->receipt->send_message($this->userid, $message, $course->id);
 
-                // Instructor digital receipt.
-                $this->submission_instructors = get_enrolled_users($context, 'mod/turnitintooltwo:grade', 0, 'u.id');
-                if (!empty($this->submission_instructors)) {
+                // Instructor digital receipt
+                // START UCLA MOD: CCLE-6310 - Fix inherited manager roles receive submission emails.
+                // $this->submission_instructors = get_enrolled_users($context,'mod/turnitintooltwo:grade', 0, 'u.id');
+                $this->submission_instructors = get_users_by_capability(context_module::instance($cm->id), 'mod/turnitintooltwo:grade', 'u.id',
+                                                '', '', '', groups_get_activity_group($cm));
+                // END UCLA MOD: CCLE-6310.
+
+                if(!empty($this->submission_instructors)){
                     $message = $this->instructor_receipt->build_instructor_message($input);
                     $this->instructor_receipt->send_instructor_message($this->submission_instructors, $message, $course->id);
                 }

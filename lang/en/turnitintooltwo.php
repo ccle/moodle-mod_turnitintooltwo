@@ -590,3 +590,6 @@ $string['exportexcel'] = 'Export to Excel';
 $string['exportpdf'] = 'Export to PDF';
 $string['exportoriginal'] = 'Export to original format';
 // END UCLA MOD: CCLE-5756-add-tooltip-to-export-option.
+// START UCLA MOD: CCLE-6410 - Pencil icon tooltip
+$string['edit'] = 'Edit';
+// END UCLA MOD: CCLE-6410

@@ -626,10 +626,11 @@ class turnitintooltwo_submission {
 
                 // Instructor digital receipt
                
-                // START UCLA MOD: CCLE-4440 - List of users eligible for Turnitin Tutor
+                // START UCLA MOD: CCLE-6310 - Fix inherited manager roles receive submission emails.
                 // $this->submission_instructors = get_enrolled_users($context,'mod/turnitintooltwo:grade', 0, 'u.id');
-                $this->submission_instructors = local_ucla_core_edit::get_course_graders($course);
-                // END UCLA MOD: CCLE-4440
+                $this->submission_instructors = get_users_by_capability(context_module::instance($cm->id), 'mod/turnitintooltwo:grade', 'u.id',
+                                                '', '', '', groups_get_activity_group($cm));
+                // END UCLA MOD: CCLE-6310.
 
                 if(!empty($this->submission_instructors)){
                     $message = $this->instructor_receipt->build_instructor_message($input);

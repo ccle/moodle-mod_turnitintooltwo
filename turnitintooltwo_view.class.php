@@ -1450,12 +1450,42 @@ class turnitintooltwo_view {
         if ($istutor) {
             if (!empty($submission->id)) {
                 $confirmstring = (empty($submission->submission_objectid)) ? 'deleteconfirm' : 'turnitindeleteconfirm';
-                $uselink = true;
+                $string = str_replace($fnd, $rep, get_string($confirmstring, 'turnitintooltwo'));
+
+                $attributes = array("onclick" => "return confirm('".$string."');");
+                // START UCLA MOD: CCLE-6300 - Trash can tooltip.
+                // $delete = html_writer::link(
+                //     $CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.$cm->id.'&part='.$partid.'&action=deletesubmission&sub='.$submission->id.'&sesskey='.sesskey(),
+                //     html_writer::tag('i', '', array('class' => 'fa fa-trash-o fa-lg')),
+                //     $attributes
+                // );
+                $delete = html_writer::link(
+                    $CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.$cm->id.'&part='.$partid.'&action=deletesubmission&sub='.$submission->id.'&sesskey='.sesskey(),
+                    html_writer::tag('i', '', array('title' => get_string('deletesubmission', 'turnitintooltwo'), 'class' => 'fa fa-trash-o fa-lg')),
+                    $attributes
+                );
+                // END UCLA MOD: CCLE-6300.
             }
         } else {
             $confirmstring = 'deleteconfirm';
             if (empty($submission->submission_objectid) && !empty($submission->id)) {
-                $uselink = true;
+                $fnd = array("\n", "\r");
+                $rep = array('\n', '\r');
+                $string = str_replace($fnd, $rep, get_string('deleteconfirm', 'turnitintooltwo'));
+
+                $attributes = array("onclick" => "return confirm('".$string."');");
+                // START UCLA MOD: CCLE-6300 - Trash can tooltip.
+                // $delete = html_writer::link(
+                //     $CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.$cm->id.'&part='.$partid.'&action=deletesubmission&sub='.$submission->id.'&sesskey='.sesskey(),
+                //     html_writer::tag('i', '', array('class' => 'fa fa-trash-o fa-lg')),
+                //     $attributes
+                // );
+                $delete = html_writer::link(
+                    $CFG->wwwroot.'/mod/turnitintooltwo/view.php?id='.$cm->id.'&part='.$partid.'&action=deletesubmission&sub='.$submission->id.'&sesskey='.sesskey(),
+                    html_writer::tag('i', '', array('title' => get_string('deletesubmission', 'turnitintooltwo'), 'class' => 'fa fa-trash-o fa-lg')),
+                    $attributes
+                );
+                // END UCLA MOD: CCLE-6300.
             }
         }
         if ($uselink) {
@@ -1921,8 +1951,12 @@ class turnitintooltwo_view {
                                                 'action' => $removeaction, 'membership_id' => $v['membership_id']));
 
                 $attributes["onclick"] = 'return confirm(\''.$removestr.'\');';
-                $link = html_writer::link($deleteurl, html_writer::tag('i', '', array('class' => 'fa fa-trash-o fa-lg')),
-                                                                                                        $attributes);
+                // START UCLA MOD: CCLE-6300 - Trash can tooltip.
+                // $link = html_writer::link($deleteurl, html_writer::tag('i', '', array('class' => 'fa fa-trash-o fa-lg')),
+                //                                                                                         $attributes);
+                $link = html_writer::link($deleteurl, html_writer::tag('i', '', 
+                    array('title' => get_string('deletesubmission', 'turnitintooltwo'), 'class' => 'fa fa-trash-o fa-lg')), $attributes);                                                                                                       
+                // END UCLA MOD: CCLE-6300.
                 $userdetails = html_writer::link($CFG->wwwroot.'/user/view.php?id='.$membermoodleid.
                                                     '&course='.$turnitintooltwoassignment->turnitintooltwo->course,
                                                     fullname($user)).' ('.$user->email.')';

@@ -1186,9 +1186,15 @@ function turnitintooltwo_getfiles($moduleid) {
             $rep = array('\n', '\r');
             $attributes["onclick"] = "return confirm('".str_replace($fnd, $rep,
                                                             get_string('filedeleteconfirm', 'turnitintooltwo'))."');";
+            // START UCLA MOD: CCLE-6300 - Trash can tooltip.
+            // $delete = html_writer::link($CFG->wwwroot.'/mod/turnitintooltwo/settings_extras.php?cmd=files&file='.
+            //                $file->id.'&filehash='.$file->hash,
+            //                    html_writer::tag('i', '', array('class' => 'fa fa-trash-o fa-lg')), $attributes);a
             $delete = html_writer::link($CFG->wwwroot.'/mod/turnitintooltwo/settings_extras.php?cmd=files&file='.
                             $file->id.'&filehash='.$file->hash,
-                                html_writer::tag('i', '', array('class' => 'fa fa-trash-o fa-lg')), $attributes);
+                                html_writer::tag('i', '', array('title' => get_string('deletesubmission', 'turnitintooltwo'),
+                                    'class' => 'fa fa-trash-o fa-lg')), $attributes);
+            // END UCLA MOD: CCLE-6300.
         }
 
         $return["aaData"][] = array($assignment, $file->courseshort, $file->coursetitle, $submission,

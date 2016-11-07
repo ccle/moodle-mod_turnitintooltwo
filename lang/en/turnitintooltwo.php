@@ -28,7 +28,10 @@ $string['deleteconfirm'] = 'Are you sure you want to delete this submission?\n\n
 // $string['deletesubmission'] = 'Delete Submission';
 $string['deletesubmission'] = 'Delete submission';
 // END UCLA MOD: CCLE-6300.
-$string['downloadsubmission'] = 'Download Submission';
+// START UCLA MOD: CCLE-6303 - Download icon tooltip.
+// $string['downloadsubmission'] = 'Download Submission';
+$string['downloadsubmission'] = 'Download submission';
+// END UCLA MOD: CCLE-6303.
 $string['dtdue'] = 'Due Date';
 $string['dtpost'] = 'Post Date';
 $string['dtstart'] = 'Start Date';

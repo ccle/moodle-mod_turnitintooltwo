@@ -596,3 +596,6 @@ $string['exportoriginal'] = 'Export to original format';
 // START UCLA MOD: CCLE-6410 - Pencil icon tooltip
 $string['edit'] = 'Edit';
 // END UCLA MOD: CCLE-6410
+// START UCLA MOD: CCLE-6375 - Course identifier in email notification.
+$string['emailnonsubmitters'] = 'Email non-submitters';
+// START UCLA MOD: CCLE-6375.

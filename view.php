@@ -740,6 +740,45 @@ switch ($do) {
             turnitintooltwo_print_error('permissiondeniederror', 'turnitintooltwo');
             exit();
         }
+        $introtext = ($do == "tutors") ? get_string('turnitintutors_desc', 'turnitintooltwo') :
+                                            get_string('turnitinstudents_desc', 'turnitintooltwo');
+        echo $OUTPUT->box($introtext, 'generalbox boxaligncenter', 'general');
+
+        $memberrole = ($do == "tutors") ? 'Instructor' : 'Learner';
+        echo $turnitintooltwoview->init_tii_member_by_role_table($cm, $turnitintooltwoassignment, $memberrole);
+        if ($do == "tutors") {
+            $tutors = $turnitintooltwoassignment->get_tii_users_by_role("Instructor", "mdl");
+            echo $turnitintooltwoview->show_add_tii_tutors_form($cm, $tutors);
+        }
+        break;
+
+    case "emailnonsubmittersform":
+            if (!$istutor) {
+                turnitintooltwo_print_error('permissiondeniederror', 'turnitintooltwo');
+                exit();
+            }
+
+            $output = '';
+
+            if (isset($_SESSION["embeddednotice"])) {
+                $output = html_writer::tag("div", $_SESSION["embeddednotice"]["message"], array('class' => 'general_warning'));
+                unset($_SESSION["embeddednotice"]);
+            }
+
+            $elements = array();
+            $elements[] = array('header', 'nonsubmitters_header', get_string('messagenonsubmitters', 'turnitintooltwo'));
+            $elements[] = array('static', 'nonsubmittersformdesc', get_string('nonsubmittersformdesc', 'turnitintooltwo'), '', '');
+            // START UCLA MOD: CCLE-6375 - Course identifier in email notification.
+            // $elements[] = array('text', 'nonsubmitters_subject', get_string('nonsubmitterssubject', 'turnitintooltwo'), '', '',
+            //                        'required', get_string('nonsubmitterssubjecterror', 'turnitintooltwo'), PARAM_TEXT);
+            $elements[] = array('text', 'nonsubmitters_subject', get_string('nonsubmitterssubject', 'turnitintooltwo'), '', '',
+                                    'required', get_string('nonsubmitterssubjecterror', 'turnitintooltwo'), PARAM_TEXT,
+                                    $COURSE->shortname . ' - ' . $turnitintooltwoassignment->turnitintooltwo->name);
+            // END UCLA MOD: CCLE-6375
+            $elements[] = array('textarea', 'nonsubmitters_message', get_string('nonsubmittersmessage', 'turnitintooltwo'), '', '',
+                                    'required', get_string('nonsubmittersmessageerror', 'turnitintooltwo'), PARAM_TEXT);
+            $elements[] = array('advcheckbox', 'nonsubmitters_sendtoself', get_string('nonsubmitterssendtoself', 'turnitintooltwo'), '', array(0, 1));
+            $customdata["checkbox_label_after"] = true;
 
         $output = '';
 

@@ -766,8 +766,13 @@ switch ($do) {
             $elements = array();
             $elements[] = array('header', 'nonsubmitters_header', get_string('messagenonsubmitters', 'turnitintooltwo'));
             $elements[] = array('static', 'nonsubmittersformdesc', get_string('nonsubmittersformdesc', 'turnitintooltwo'), '', '');
+            // START UCLA MOD: CCLE-6375 - Course identifier in email notification.
+            // $elements[] = array('text', 'nonsubmitters_subject', get_string('nonsubmitterssubject', 'turnitintooltwo'), '', '',
+            //                        'required', get_string('nonsubmitterssubjecterror', 'turnitintooltwo'), PARAM_TEXT);
             $elements[] = array('text', 'nonsubmitters_subject', get_string('nonsubmitterssubject', 'turnitintooltwo'), '', '',
-                                    'required', get_string('nonsubmitterssubjecterror', 'turnitintooltwo'), PARAM_TEXT);
+                                    'required', get_string('nonsubmitterssubjecterror', 'turnitintooltwo'), PARAM_TEXT,
+                                    $COURSE->shortname . ' - ' . $turnitintooltwoassignment->turnitintooltwo->name);
+            // END UCLA MOD: CCLE-6375
             $elements[] = array('textarea', 'nonsubmitters_message', get_string('nonsubmittersmessage', 'turnitintooltwo'), '', '',
                                     'required', get_string('nonsubmittersmessageerror', 'turnitintooltwo'), PARAM_TEXT);
             $elements[] = array('advcheckbox', 'nonsubmitters_sendtoself', get_string('nonsubmitterssendtoself', 'turnitintooltwo'), '', array(0, 1));

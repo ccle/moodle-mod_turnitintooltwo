@@ -55,6 +55,16 @@
     width:80%;
 }
 
+// START UCLA MOD: CCLE-6375 - Course identifier in email notification.
+.mod_turnitintooltwo .nonsubmittersform input[type = text] {
+    width: 80%;
+}
+ 
+#fitem_id_nonsubmittersformdesc > div.fitemtitle {
+    width: 100%;
+}
+// END UCLA MOD: CCLE-6375.
+
 .mod_turnitintooltwo #fitem_id_nonsubmitters_sendtoself .fitemtitle {
     display: none;
 }

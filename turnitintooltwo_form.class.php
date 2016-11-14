@@ -64,6 +64,11 @@ class turnitintooltwo_form extends moodleform {
                 case "text":
                     $mform->addElement($element[0], $element[1], $element[2]);
                     $mform->setType($element[1], PARAM_RAW);
+                    // START UCLA MOD: CCLE-6375 - Course identifier in email notification.
+                    if ($element[1] == "nonsubmitters_subject" && isset($element[8])) {
+                        $mform->setDefault($element[1], $element[8]);
+                    }
+                    // END UCLA MOD: CCLE-6375.
                     break;
                 default:
                     $mform->addElement($element[0], $element[1], $element[2]);

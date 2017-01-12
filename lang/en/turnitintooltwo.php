@@ -46,9 +46,14 @@ $string['excludewords'] = 'Words';
 $string['filetosubmit'] = 'File to Submit';
 $string['filetosubmit_help'] = 'When submitting a file to an assignment part, browse your computer for the file to upload using this form element.';
 $string['fileupload'] = 'File Upload';
-$string['genduedate'] = 'Generate reports on due date (resubmissions are allowed until due date)';
-$string['genimmediately1'] = 'Generate reports immediately (resubmissions are not allowed)';
-$string['genimmediately2'] = 'Generate reports immediately (resubmissions are allowed until due date)';
+// START UCLA MOD: CCLE-6469-rename-generate-report.
+// $string['genduedate'] = 'Generate reports on due date (resubmissions are allowed until due date)';
+// $string['genimmediately1'] = 'Generate reports immediately (resubmissions are not allowed)';
+// $string['genimmediately2'] = 'Generate reports immediately (resubmissions are allowed until due date)';
+$string['genduedate'] = 'Resubmissions allowed until due date (generate reports on due date)';
+$string['genimmediately1'] = 'Resubmissions disallowed';
+$string['genimmediately2'] = 'Resubmissions allowed until due date (generate reports immediately)';
+// END UCLA MOD: CCLE-6469-rename-generate-report.
 $string['institutionalrepository'] = 'Institutional Repository (Where Applicable)';
 $string['institutionalchecksettings'] = 'Check against<br />Institutional Repository';
 $string['institutionalcheck'] = 'Check against Institutional Repository';
@@ -104,7 +109,10 @@ $string['proxyurl'] = 'Proxy URL';
 $string['proxyurl_desc'] = '<b>[Optional]</b><br />If your server uses a Proxy to connect to the internet enter the proxy address here.';
 $string['proxyuser'] = 'Proxy Username';
 $string['proxyuser_desc'] = '<b>[Optional]</b><br />If your proxy requires Authentication enter the username here.';
-$string['reportgenspeed'] = 'Report Generation Speed';
+// START UCLA MOD: CCLE-6469-rename-report-generation-speed.
+// $string['reportgenspeed'] = 'Report Generation Speed';
+$string['reportgenspeed'] = 'Resubmissions';
+// END UCLA MOD: CCLE-6469-rename-report-generation-speed.
 $string['resubmission'] = 'Resubmission';
 // START UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
 $string['resubmissiongradewarn'] = 'Resubmissions are allowed for this assignment until the due date passes. Any and all grades will be deleted when or if the paper is resubmitted. Would you like to continue?';
@@ -507,7 +515,13 @@ $string['disableanonconfirm'] = 'Doing this will permanently disable anonymous g
 // END UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
 $string['uniquepartname'] = 'Part name must be unique';
 $string['closebutton'] = 'Close';
-$string['reportgenspeed_help'] = 'There are three options for this assignment setting: &#39;Generate reports immediately (resubmissions are not allowed)&#39;, &#39;Generate reports immediately (resubmissions are allowed until due date)&#39;, and &#39;Generate reports on due date (resubmissions are allowed until due date)&#39;<br /><br />The option &#39;Generate reports immediately (resubmissions are not allowed)&#39; generates the Originality Report immediately when a student makes a submission. With this option selected your students will not be able to resubmit to the assignment.<br /><br />To allow resubmissions, select &#39;Generate reports immediately (resubmissions are allowed until due date)&#39; option. This allows students to continuously resubmit papers to the assignment until the due date. It may take up to 24 hours to process Originality Reports for resubmissions.<br /><br />The option &#39;Generate reports on due date (resubmissions are allowed until due date)&#39; will only generate an Originality Report on the assignment&#39;s due date. This setting will make it so all papers submitted to the assignment will be compared against each other when the Originality Reports are created.';
+// START UCLA MOD: CCLE-6469-rename-generate-report.
+//$string['reportgenspeed_help'] = 'There are three options for this assignment setting: &#39;Generate reports immediately (resubmissions are not allowed)&#39;, &#39;Generate reports immediately (resubmissions are allowed until due date)&#39;, and &#39;Generate reports on due date (resubmissions are allowed until due date)&#39;<br /><br />The option &#39;Generate reports immediately (resubmissions are not allowed)&#39; generates the Originality Report immediately when a student makes a submission. With this option selected your students will not be able to resubmit to the assignment.<br /><br />To allow resubmissions, select &#39;Generate reports immediately (resubmissions are allowed until due date)&#39; option. This allows students to continuously resubmit papers to the assignment until the due date. It may take up to 24 hours to process Originality Reports for resubmissions.<br /><br />The option &#39;Generate reports on due date (resubmissions are allowed until due date)&#39; will only generate an Originality Report on the assignment&#39;s due date. This setting will make it so all papers submitted to the assignment will be compared against each other when the Originality Reports are created.';
+$string['reportgenspeed_help'] = 'There are three options for this assignment setting: &#39;Resubmissions disallowed&#39;, &#39;Resubmissions allowed until due date (generate reports immediately)&#39;, and &#39;Resubmissions allowed until due date (generate reports on due date)&#39;<br /><br />'
+        . 'The option &#39;Resubmissions disallowed&#39; generates the Originality Report immediately when a student makes a submission. With this option selected your students will not be able to resubmit to the assignment.<br /><br />'
+        . 'To allow resubmissions, select &#39;Resubmissions allowed until due date (generate reports immediately)&#39; option. This allows students to continuously resubmit papers to the assignment until the due date. It may take up to 24 hours to process Originality Reports for resubmissions.<br /><br />'
+        . 'The option &#39;Resubmissions allowed until due date (generate reports on due date)&#39; will only generate an Originality Report on the assignment&#39;s due date. This setting will make it so all papers submitted to the assignment will be compared against each other when the Originality Reports are created.';
+// END UCLA MOD: CCLE-6469-rename-generate-report.
 $string['submissiondate'] = 'Submission Date';
 $string['receiptassignmenttitle'] = 'Assignment Title';
 $string['refid'] = 'Ref. ID';

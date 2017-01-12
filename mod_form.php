@@ -309,7 +309,11 @@ class mod_turnitintooltwo_mod_form extends moodleform_mod {
         // END UCLA-MOD: CCLE-5751 Missing label.
         $mform->setDefault('set_instructor_defaults', false);
         $mform->addHelpButton('set_instructor_defaults', 'setinstructordefaults', 'turnitintooltwo');
-
+        
+        // START UCLA MOD: CCLE-6430-TiiV2-move-submission-to-general-setting.
+        $mform->addElement('select', 'allowlate', get_string('allowlate', 'turnitintooltwo'), $ynoptions);
+        $mform->setDefault('allowlate', $config->default_allowlate);
+        // END UCLA MOD: CCLE-6430-TiiV2-move-submission-to-general-setting.
         $dateoptions = array('startyear' => date( 'Y', strtotime( '-6 years' )), 'stopyear' => date( 'Y', strtotime( '+6 years' )),
                     'timezone' => 99, 'applydst' => true, 'step' => 1, 'optional' => false);
 
@@ -392,8 +396,10 @@ class mod_turnitintooltwo_mod_form extends moodleform_mod {
 
         $mform->addElement('header', 'advanced', get_string('turnitinoroptions', 'turnitintooltwo'));
 
-        $mform->addElement('select', 'allowlate', get_string('allowlate', 'turnitintooltwo'), $ynoptions);
-        $mform->setDefault('allowlate', $config->default_allowlate);
+        // START UCLA MOD: CCLE-6430-TiiV2-move-submission-to-general-setting.
+        // $mform->addElement('select', 'allowlate', get_string('allowlate', 'turnitintooltwo'), $ynoptions);
+        // $mform->setDefault('allowlate', $config->default_allowlate);
+        // END UCLA MOD: CCLE-6430-TiiV2-move-submission-to-general-setting.
 
         $genparams = turnitintooltwo_get_report_gen_speed_params();
         $genoptions = array(0 => get_string('genimmediately1', 'turnitintooltwo'),

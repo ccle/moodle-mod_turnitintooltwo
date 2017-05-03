@@ -1515,8 +1515,11 @@ class turnitintooltwo_assignment {
         }
         // END UCLA-MOD: CCLE-5141-list-inactive-student.
         return (!is_array($courseusers)) ? array() : $courseusers;
-     * Initialise a checkbox value that may not have been set in the edit module form.
-     */
+    }
+    
+    /**
+    * Initialise a checkbox value that may not have been set in the edit module form.
+    */
     public function set_checkbox_field($field, $value = 0) {
         if (!isset($this->turnitintooltwo->$field)) {
             $this->turnitintooltwo->$field = $value;

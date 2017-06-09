@@ -423,6 +423,10 @@
         $('.tii_table_functions').each(function () {
             var part_id = $(this).attr('id').split('tii_table_functions_')[1];
 
+            var tii_table_functions = $("#tii_table_functions_" + part_id).html();            
+            $('#tii_table_functions_' + part_id).remove();
+            $('#' + part_id + '_length').after(tii_table_functions);
+            $('.messages_inbox').show();
 
             $('#refresh_' + part_id).show();
             $('#refreshing_' + part_id).hide();

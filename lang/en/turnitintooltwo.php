@@ -1,7 +1,22 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 // Version: 2015040101
 // Date: 2015-04-01
-// Language: en
+// Language: en.
 
 $string['addsubmission'] = 'Add Submission';
 $string['allowlate'] = 'Allow Submissions after the Due Date';
@@ -155,7 +170,7 @@ $string['submissionuploadsuccess'] = 'Your submission has successfully been uplo
 $string['submitpaper'] = 'Submit';
 // END UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
 $string['submitpapersto'] = 'Store Student Papers';
-$string['submitpapersto_help'] = 'This setting provides instructors with the ability to select whether papers are stored in a Turnitin student paper repository. The benefit of submitting papers to the student paper repository is that student papers submitted to the assignment are checked against other students\&#39; submissions within your current and previous classes. If you select &#34;no repository&#34;, your students\&#39; papers will not be stored in the Turnitin student paper repository.';
+$string['submitpapersto_help'] = 'This setting provides instructors with the ability to select whether papers are stored in a Turnitin student paper repository. The benefit of submitting papers to the student paper repository is that student papers submitted to the assignment are checked against other students&#39; submissions within your current and previous classes. If you select &#34;no repository&#34;, your students&#39; papers will not be stored in the Turnitin student paper repository.';
 $string['submitted'] = 'Submitted';
 $string['submittoturnitin'] = 'Submit to Turnitin';
 $string['textsubmission'] = 'Text Submission';
@@ -252,8 +267,8 @@ $string['erater_handbook_learners'] = 'English Learners';
 $string['erater_dictionary_enus'] = 'US English Dictionary';
 $string['erater_dictionary_engb'] = 'UK English Dictionary';
 $string['erater_dictionary_en'] = 'Both US and UK English Dictionaries';
-$string['turnitinuseerater'] = 'Enable ETS&copy';
-$string['turnitinuseerater_desc'] = 'Choose whether to enable ETS&copy grammar checking.<br /><i>(Enable this option only if ETS&copy e-rater is enabled on your Turnitin account)</i>';
+$string['turnitinuseerater'] = 'Enable ETS&copy;';
+$string['turnitinuseerater_desc'] = 'Choose whether to enable ETS&copy; grammar checking.<br /><i>(Enable this option only if ETS&copy; e-rater is enabled on your Turnitin account)</i>';
 $string['student_read'] = 'The student viewed the paper on:';
 $string['student_notread'] = 'The student has not viewed this paper.';
 $string['relinkusers'] = 'Relink Users';
@@ -605,6 +620,12 @@ $string['tiidebugginglogs'] = 'Debugging and Logging';
 $string['diagnosticoptions_0'] = 'Off';
 $string['diagnosticoptions_1'] = 'Standard';
 $string['diagnosticoptions_2'] = 'Debugging';
+$string['nofinfolibrary'] = 'To use this plugin you will need to have the PHP Fileinfo extension installed on your server.';
+$string['nosoaplibrary'] = 'To use this plugin you will need to have the PHP SOAP extension installed on your server.';
+$string['refreshallgrades'] = 'Refresh all Grades from Turnitin';
+$string['refreshingallgrades'] = 'Refreshing Grades from Turnitin';
+$string['studentfirstname'] = 'First Name';
+$string['studentlastname'] = 'Last Name';
 // START UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.
 $string['assignmentdefault'] = 'Assignment defaults';
 // END UCLA MOD: CCLE-5751-Fix-turnitinV2-assignment-label-and-grading-text.

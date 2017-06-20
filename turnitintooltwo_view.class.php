@@ -1932,9 +1932,11 @@ class turnitintooltwo_view {
                                                 'action' => $removeaction, 'membership_id' => $v['membership_id']));
 
                 $attributes["onclick"] = 'return confirm(\''.$removestr.'\');';
-                $link = html_writer::link($deleteurl, html_writer::tag('i', '', array('title' => get_string('deletesubmission', 'turnitintooltwo'),
-                                                                                    'class' => 'fa fa-trash-o fa-lg')),
-                                                                                                        $attributes);
+                // START UCLA MOD: CCLE-6685 - Remove Trash can icon for Turnitin Tutors.
+                //$link = html_writer::link($deleteurl, html_writer::tag('i', '', array('title' => get_string('deletesubmission', 'turnitintooltwo'),
+                //                                                                    'class' => 'fa fa-trash-o fa-lg')),
+                //                                                                                        $attributes);
+                // END UCLA MOD: CCLE-6685.
                 $userdetails = html_writer::link($CFG->wwwroot.'/user/view.php?id='.$membermoodleid.
                                                     '&course='.$turnitintooltwoassignment->turnitintooltwo->course,
                                                     fullname($user)).' ('.$user->email.')';

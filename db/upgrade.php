@@ -178,6 +178,8 @@ function xmldb_turnitintooltwo_upgrade($oldversion) {
     }
 
     if ($oldversion < 2017011301) {
+        // START UCLA MOD: CCLE-6620 - Upgrade TurnItIn V2 to v2017052401
+        /*
         // Grab any duplicated submission rows.
         $query = "SELECT
             sb.id,
@@ -222,6 +224,8 @@ function xmldb_turnitintooltwo_upgrade($oldversion) {
         } catch (Exception $e) {
             turnitintooltwo_activitylog("Could not create file to log duplicated submissions","UPGRADE");
         }
+        */
+        // END UCLA MOD: CCLE-6620
 
         // Add new column that has to be unique.
         $table = new xmldb_table('turnitintooltwo_submissions');

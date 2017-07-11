@@ -16,7 +16,7 @@ Before installing these plugins firstly make sure you are logged in as an Admini
 
 To install, all you need to do is copy all the files into the mod/turnitintooltwo directory on your moodle installation. You should then go to `"Site Administration" > "Notifications"` and follow the on screen instructions.
 
-To configure the plugin go to `"Site Administration" > "Plugins" > "Activity Modules" > "Turnitin Assignment 2"` and enter your Turnitin account Id, shared key and API URL.
+To configure the plugin go to `"Site Administration" > "Plugins" > "Activity Modules" > "Turnitin Assignment"` and enter your Turnitin account Id, shared key and API URL.
 
 **Note:** *The API connection URL is different for this package to previous Turnitin plugins. It should be https://api.turnitin.com, https://api.turnitinuk.com. or https://sandbox.turnitin.com.*
 

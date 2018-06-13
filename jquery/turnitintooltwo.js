@@ -1202,7 +1202,7 @@
         }
         // START UCLA MOD: CCLE-6297 Launch peermark manager close button.
         function smallTiiCloseButton() {
-            $('#cboxWrapper').append('<div id="small_tii_close_button"><a href="#" onclick="$.colorbox.close(); return false;">' + M.str.turnitintooltwo.closebutton + '</a></div>');
+            $('body').append('<div id="small_tii_close_button"><a href="#" onclick="jQuery(\'#cboxClose\').click(); return false;">' + M.str.turnitintooltwo.closebutton + '</a></div>');
         }
         // END UCLA MOD: CCLE-6297.
 

@@ -1375,7 +1375,7 @@ class turnitintooltwo_view {
 
             // START UCLA-MOD: CCLE-5544 Improve Turnitintwo submit button
 
-            //$uploadtext = (!$istutor) ? html_writer::tag('span', get_string('submitpaper', 'turnitintooltwo')) : '';
+            $uploadtext = (!$istutor) ? html_writer::tag('span', get_string('submitpaper', 'turnitintooltwo')) : '';
             if (!empty($submission->submission_objectid) && !empty($submission->id) && !$submission->submission_acceptnothing) {
                 $submissionstr = get_string('resubmit', 'turnitintooltwo');
             } else {

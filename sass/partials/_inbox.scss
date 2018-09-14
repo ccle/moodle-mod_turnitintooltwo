@@ -93,7 +93,9 @@
 
 .dropdown-menu {
     white-space: nowrap;
-    margin-top: 2px !important;
+    // START UCLA MOD: CCLE-7781 - Move dropdown menu on Gear icon in modules.
+    // margin-top: 2px !important;
+    // END UCLA MOD: CCLE-7781.
 }
 
 #rubric_view_form {

@@ -734,4 +734,25 @@ class mod_turnitintooltwo_mod_form extends moodleform_mod {
 
         return $current;
     }
+
+    // START UCLA MOD: SSC-3884 - Make Separate groups default for certain modules.
+    /**
+     * Load in existing data as form defaults. Usually new entry defaults are stored directly in
+     * form definition (new entry form); this function is used to load in data where values
+     * already exist and data is being edited (edit entry form).
+     *
+     * @param mixed $default_values object or array of default values
+     */
+    public function set_data($defaultvalues) {
+        if (is_object($defaultvalues)) {
+            $defaultvalues = (array)$defaultvalues;
+        }
+
+        // $this->_cm is null if the module is being added.
+        if (!isset($this->_cm)) {
+            $defaultvalues['groupmode'] = SEPARATEGROUPS;
+        }
+        parent::set_data($defaultvalues);
+    }
+    // END UCLA MOD: SSC-3884.
 }

@@ -1955,9 +1955,15 @@ class turnitintooltwo_view {
         }
 
         $memberdata = array();
+        // START UCLA MOD: CCLE-9302 - Reimplement CCLE-6336
+        $context = context_module::instance($cm->id);
+        // END UCLA MOD: CCLE-9302
         foreach ($members as $k => $v) {
             $membermoodleid = turnitintooltwo_user::get_moodle_user_id($k);
-            if ($membermoodleid > 0) {
+            // START UCLA MOD: CCLE-9302 - Reimplement CCLE-6336
+            // if ($membermoodleid > 0) {
+            if ($membermoodleid > 0 && is_enrolled($context, $membermoodleid, '', true)) {
+            // END UCLA MOD: CCLE-9302
                 $user = $DB->get_record('user', array('id' => $membermoodleid));
 
                 $deleteurl = new moodle_url($CFG->wwwroot."/mod/turnitintooltwo/view.php",

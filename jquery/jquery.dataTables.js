@@ -6425,6 +6425,11 @@
 
                 $( rowOne[0] ).children('th, td').each( function (i, cell) {
                     var col = oSettings.aoColumns[i];
+                    // START UCLA MOD: CCLE-9380 - Student Turnitin view.
+                    if (col == null) {
+                        return false;
+                    }
+                    // END UCLA MOD: CCLE-9380.
 
                     if ( col.mData === i ) {
                         var sort = a( cell, 'sort' ) || a( cell, 'order' );

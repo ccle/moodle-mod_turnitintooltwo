@@ -472,7 +472,10 @@ class turnitintooltwo_view {
                 html_writer::tag('div', ' / '.get_string('studentlastname', 'turnitintooltwo'), array('class' => 'data-table-splitter splitter-lastname sorting', 'data-col' => 2))
             );
         } else {
-            $cells["student"] = new html_table_cell();
+            // START UCLA MOD: CCLE-9380 - Student Turnitin view broken.
+            //$cells["student"] = new html_table_cell();
+            $cells["student"] = new html_table_cell('&nbsp;');
+            // END UCLA MOD: CCLE-9380.
         }
         $cells["student"]->attributes['class'] = 'left';
         $cells["title_raw"] = new html_table_cell('&nbsp;');
@@ -487,13 +490,19 @@ class turnitintooltwo_view {
         $cells["submitted_date"]->attributes['class'] = 'right';
         if (($turnitintooltwouser->get_user_role() == 'Instructor') ||
                 ($turnitintooltwouser->get_user_role() == 'Learner' && $origreportenabled)) {
-            $cells["report_raw"] = new html_table_cell();
+            // START UCLA MOD: CCLE-9380 - Student Turnitin view broken.
+            //$cells["report_raw"] = new html_table_cell();
+            $cells["report_raw"] = new html_table_cell('&nbsp;');
+            // END UCLA MOD: CCLE-9380.
             $cells["report_raw"]->attributes['class'] = 'raw_data';
             $cells["report"] = new html_table_cell(get_string('submissionorig', 'turnitintooltwo'));
             $cells["report"]->attributes['class'] = 'right';
         }
         if ($grademarkenabled) {
-            $cells["grade_raw"] = new html_table_cell();
+            // START UCLA MOD: CCLE-9380 - Student Turnitin view broken.
+            //$cells["grade_raw"] = new html_table_cell();
+            $cells["grade_raw"] = new html_table_cell('&nbsp;');
+            // END UCLA MOD: CCLE-9380.
             $cells["grade_raw"]->attributes['class'] = 'raw_data';
             $cells["grade"] = new html_table_cell(get_string('submissiongrade', 'turnitintooltwo'));
             $cells["grade"]->id = "grademark";

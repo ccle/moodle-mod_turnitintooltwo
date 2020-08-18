@@ -34,4 +34,7 @@ gulp.task('watch', function() {
     gulp.watch('./jquery/turnitintooltwo*.js', gulp.series('jsmin'));
 });
 
-gulp.task('default', gulp.series(['sass', 'jsmin', 'watch']));
+// START UCLA MOD: CCLE-9448 - Upgrade Turnitintooltwo to v2020072201.
+// gulp.task('default', ['sass', 'jsmin', 'watch']);
+gulp.task('default', gulp.series('sass', 'jsmin', 'watch'));
+// END UCLA MOD: CCLE-9448. 

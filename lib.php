@@ -113,6 +113,9 @@ function turnitintooltwo_supports($feature) {
     defined("FEATURE_SHOW_DESCRIPTION") or define("FEATURE_SHOW_DESCRIPTION", null);
     switch($feature) {
         case FEATURE_GROUPS:
+        // START UCLA MOD: CCLE-6587 - Restrict by grouping in Turnitin Submissions list.
+        case FEATURE_GROUPINGS:
+        // START UCLA MOD: CCLE-6587
         case FEATURE_GROUPMEMBERSONLY:
         case FEATURE_MOD_INTRO:
         case FEATURE_COMPLETION_TRACKS_VIEWS:
